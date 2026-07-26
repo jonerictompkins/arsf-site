@@ -2,7 +2,7 @@
 
 An independent redesign prototype for the Akita Rescue Society of Florida. It is not connected to ARSF's production website or repository.
 
-The generated site currently contains 53 responsive pages spanning Akita education, rescue and placement, Happy Tails, Dog Stars, feature videos, memorials, picnic galleries, practical resources, and society information.
+The generated site currently contains 56 responsive primary pages spanning Akita education, rescue and placement, Happy Tails, Dog Stars, feature videos, memorials, picnic galleries, practical resources, and society information, plus a dedicated 404 page.
 
 ## Why this shape
 

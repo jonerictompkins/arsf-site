@@ -40,6 +40,53 @@ def text_link(label: str, url: str) -> str:
     )
 
 
+def slugify(value: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+    return slug or "remembered-akita"
+
+
+def memorial_caption(item: dict) -> str:
+    return (
+        item["caption"]
+        .replace("Click Photo", "")
+        .replace("Click to see his video", "Featured in an ARSF video")
+        .strip()
+    )
+
+
+def paw_trail() -> str:
+    paw = """
+      <g>
+        <ellipse cx="0" cy="11" rx="13" ry="16"></ellipse>
+        <ellipse cx="-16" cy="-5" rx="6" ry="8"></ellipse>
+        <ellipse cx="-5" cy="-13" rx="6" ry="8"></ellipse>
+        <ellipse cx="8" cy="-13" rx="6" ry="8"></ellipse>
+        <ellipse cx="18" cy="-4" rx="6" ry="8"></ellipse>
+      </g>"""
+    return f"""
+      <svg class="paw-trail" viewBox="0 0 330 115" aria-hidden="true">
+        <g transform="translate(45 68) rotate(-18)">{paw}</g>
+        <g transform="translate(160 42) rotate(14) scale(.8)">{paw}</g>
+        <g transform="translate(278 65) rotate(-15) scale(.62)">{paw}</g>
+      </svg>"""
+
+
+def bridge_callout() -> str:
+    return f"""
+      <section class="bridge-callout">
+        <figure>
+          <img src="../../images/archive/rainbow-bridge.jpg" alt="Rainbow Bridge artwork preserved from ARSF’s memorial archive" width="526" height="392" loading="lazy">
+        </figure>
+        <div>
+          {paw_trail()}
+          <p class="eyebrow">Their steps remain with us</p>
+          <h2>Every remembered life has a place here.</h2>
+          <p>For the Akitas whose full stories were never written down, ARSF still carries their names forward.</p>
+          <a class="text-link" href="../remembering/">Visit the shared remembrance <span aria-hidden="true">→</span></a>
+        </div>
+      </section>"""
+
+
 def dog_card(dog: dict, root: str = "./") -> str:
     traits = "".join(f"<li>{safe(trait)}</li>" for trait in dog["traits"])
     image_path = root + dog["image"].lstrip("/")
@@ -463,7 +510,22 @@ def build_feature_videos(site: dict, archive: dict) -> None:
 
 def build_tribute_pages(site: dict, archive: dict) -> dict[str, str]:
     internal_links = {}
+    memorial_by_source = {
+        item["tribute_url"]: item
+        for item in archive["memorials"]
+        if item.get("tribute_url")
+    }
+    used_slugs: set[str] = set()
     for tribute in archive["tributes"]:
+        memorial = memorial_by_source.get(
+            tribute["source_url"],
+            {
+                "name": tribute["name"],
+                "caption": tribute["caption"],
+                "image": None,
+                "orphan": False,
+            },
+        )
         paragraphs = [
             paragraph
             for paragraph in tribute["paragraphs"]
@@ -475,39 +537,192 @@ def build_tribute_pages(site: dict, archive: dict) -> dict[str, str]:
                 "<p>This tribute is preserved primarily through its photographs. "
                 "The original ARSF page remains linked below.</p>"
             )
+        primary_image = (
+            tribute["images"][0]["url"]
+            if tribute["images"]
+            else memorial.get("image")
+        )
+        portrait = (
+            f'<img src="{safe(primary_image)}" alt="{safe(memorial["name"])}, remembered by the ARSF community" loading="eager">'
+            if primary_image
+            else (
+                '<div class="tribute-photo-missing" role="img" '
+                f'aria-label="No photograph is available for {safe(memorial["name"])}">'
+                '<span>Remembered<br>with love</span></div>'
+            )
+        )
+        marker = (
+            """
+              <span class="tribute-orphan-marker">
+                <span aria-hidden="true">♥</span>
+                <span class="sr-only">ARSF orphan who never found a forever home</span>
+              </span>"""
+            if memorial.get("orphan")
+            else ""
+        )
+        gallery_images = [
+            image
+            for image in tribute["images"]
+            if image["url"] != primary_image
+        ]
         images = "".join(
             f"""
             <a href="{safe(image['url'])}" target="_blank" rel="noopener">
               <img src="{safe(image['url'])}" alt="{safe(image['alt'])}" loading="lazy">
             </a>"""
-            for image in tribute["images"]
+            for image in gallery_images
         )
+        gallery = (
+            f'<div class="tribute-gallery">{images}</div>'
+            if images
+            else ""
+        )
+        caption = memorial_caption(memorial) or "A life remembered with love."
         body = f"""
       <section class="page-section memorial-tribute">
-        <div class="shell reading-layout">
-          <article class="prose">
-            {narrative}
-            <div class="tribute-gallery">{images}</div>
-            <div class="source-note">
-              <span>Original ARSF tribute</span>
-              {text_link("View the source page", tribute["source_url"])}
-            </div>
-          </article>
+        <div class="shell">
+          <div class="tribute-story-grid">
+            <aside class="tribute-portrait{" tribute-portrait--orphan" if memorial.get("orphan") else ""}">
+              <figure>{portrait}{marker}</figure>
+              <div>
+                <span>{"Held forever by ARSF" if memorial.get("orphan") else "Always remembered"}</span>
+                <strong>{safe(memorial["name"])}</strong>
+                <p>{safe(caption)}</p>
+              </div>
+            </aside>
+            <article class="prose tribute-prose">
+              <p class="tribute-lede">A life carried forward in memory.</p>
+              {narrative}
+              {gallery}
+              <div class="source-note">
+                <span>Original ARSF tribute</span>
+                {text_link("View the preserved source", tribute["source_url"])}
+              </div>
+            </article>
+          </div>
+          {bridge_callout()}
         </div>
       </section>"""
         slug = f"memorials/{tribute['slug']}"
+        used_slugs.add(tribute["slug"])
         write_page(
             site,
             slug,
             title=tribute["name"],
-            description=tribute["caption"].replace("Click Photo", "").strip()
+            description=caption
             or f"A tribute preserved by the ARSF community for {tribute['name']}.",
             eyebrow="Always remembered",
             group="Memorials",
             body=body,
         )
         internal_links[tribute["source_url"]] = f"./{tribute['slug']}/"
+
+    video_by_source = {
+        item["source_url"]: item for item in archive["feature_videos"]
+    }
+    for memorial in archive["memorials"]:
+        source_url = memorial.get("tribute_url")
+        if not source_url or source_url in internal_links:
+            continue
+        base_slug = slugify(memorial["name"])
+        slug = base_slug
+        counter = 2
+        while slug in used_slugs:
+            slug = f"{base_slug}-{counter}"
+            counter += 1
+        used_slugs.add(slug)
+        video = video_by_source.get(source_url)
+        media = ""
+        if video and video.get("video"):
+            poster = (
+                f' poster="{safe(video["poster"])}"'
+                if video.get("poster")
+                else ""
+            )
+            media = f"""
+              <video class="tribute-video" controls preload="metadata"{poster}>
+                <source src="{safe(video["video"])}">
+                <a href="{safe(video["video"])}">Watch the preserved ARSF film</a>
+              </video>"""
+        portrait = (
+            f'<img src="{safe(memorial["image"])}" alt="{safe(memorial["name"])}, remembered by the ARSF community" loading="eager">'
+            if memorial.get("image")
+            else '<div class="tribute-photo-missing"><span>Remembered<br>with love</span></div>'
+        )
+        caption = memorial_caption(memorial) or "A life remembered with love."
+        body = f"""
+      <section class="page-section memorial-tribute">
+        <div class="shell">
+          <div class="tribute-story-grid">
+            <aside class="tribute-portrait{" tribute-portrait--orphan" if memorial.get("orphan") else ""}">
+              <figure>{portrait}</figure>
+              <div>
+                <span>{"Held forever by ARSF" if memorial.get("orphan") else "Always remembered"}</span>
+                <strong>{safe(memorial["name"])}</strong>
+                <p>{safe(caption)}</p>
+              </div>
+            </aside>
+            <article class="prose tribute-prose">
+              <p class="tribute-lede">ARSF preserved this remembrance through film.</p>
+              <p>Some stories live in voices, movement, and the moments a camera happened to keep. This film remains part of {safe(memorial["name"])}’s place in the ARSF archive.</p>
+              {media}
+              <div class="source-note">
+                <span>Original ARSF film</span>
+                {text_link("View the preserved source", source_url)}
+              </div>
+            </article>
+          </div>
+          {bridge_callout()}
+        </div>
+      </section>"""
+        write_page(
+            site,
+            f"memorials/{slug}",
+            title=memorial["name"],
+            description=caption,
+            eyebrow="Always remembered",
+            group="Memorials",
+            body=body,
+        )
+        internal_links[source_url] = f"./{slug}/"
     return internal_links
+
+
+def build_remembrance_page(site: dict, archive: dict) -> None:
+    orphan_count = sum(bool(item.get("orphan")) for item in archive["memorials"])
+    body = f"""
+      <section class="page-section remembrance-page" id="shared-remembrance">
+        <div class="shell remembrance-grid">
+          <article class="remembrance-copy">
+            {paw_trail()}
+            <p class="eyebrow">For the stories that were never written down</p>
+            <h2>A life does not need a long biography to be worth remembering.</h2>
+            <p>Dogs leave their history in ordinary places: the quiet corner they chose, the familiar rhythm of a walk, the people who learned patience from them, and the welcome that changed a difficult day.</p>
+            <p>For some Akitas in ARSF’s archive, a name, a photograph, and a final date are all that remain online. That is not the measure of their life. They were here. Someone spoke their name. Someone carried them as far as they could.</p>
+            <blockquote>What is loved becomes part of the people who did the loving.</blockquote>
+            <a class="button button-light" href="../">Return to every memorial</a>
+          </article>
+          <div class="remembrance-art">
+            <figure>
+              <img src="../../images/archive/rainbow-bridge.jpg" alt="Rainbow Bridge artwork preserved from ARSF’s memorial archive" width="526" height="392">
+              <figcaption>The Rainbow Bridge artwork remains part of ARSF’s memorial tradition.</figcaption>
+            </figure>
+            <aside>
+              <span class="orphan-marker orphan-marker--legend" aria-hidden="true">♥</span>
+              <p><strong>Held forever by ARSF</strong>{orphan_count} Akitas are marked with a heart because rescue was the only forever home they knew.</p>
+            </aside>
+          </div>
+        </div>
+      </section>"""
+    write_page(
+        site,
+        "memorials/remembering",
+        title="A place for every remembered Akita",
+        description="A shared remembrance for the Akitas whose names and photographs remain, even when no individual tribute was written.",
+        eyebrow="Their steps remain with us",
+        group="Memorials",
+        body=body,
+    )
 
 
 def build_memorials(
@@ -518,14 +733,9 @@ def build_memorials(
     cards = []
     for item in archive["memorials"]:
         tribute_url = item.get("tribute_url")
-        source = tribute_links.get(tribute_url, tribute_url) if tribute_url else None
+        source = tribute_links.get(tribute_url, "./remembering/")
         orphan = bool(item.get("orphan"))
-        caption = (
-            item["caption"]
-            .replace("Click Photo", "")
-            .replace("Click to see his video", "Featured in an ARSF video")
-            .strip()
-        )
+        caption = memorial_caption(item)
         marker = (
             """
                 <span class="orphan-marker">
@@ -539,7 +749,10 @@ def build_memorials(
             '<span class="memorial-card-link">Read their tribute '
             '<span aria-hidden="true">→</span></span>'
             if tribute_url
-            else '<span class="memorial-card-note">Remembered by the ARSF community</span>'
+            else (
+                '<span class="memorial-card-link">Remember them with us '
+                '<span aria-hidden="true">→</span></span>'
+            )
         )
         portrait = (
             f'<img src="{safe(item["image"])}" alt="{safe(item["name"])}, remembered by the ARSF community" loading="lazy">'
@@ -561,13 +774,10 @@ def build_memorials(
               <p>{safe(caption or "A life remembered with love.")}</p>
               {action}
             </div>"""
-        if source:
-            content = (
-                f'<a href="{safe(source)}"{link_attributes(source)} '
-                f'aria-label="Read the tribute for {safe(item["name"])}">{content}</a>'
-            )
-        else:
-            content = f'<div class="memorial-card-inner">{content}</div>'
+        content = (
+            f'<a href="{safe(source)}" '
+            f'aria-label="Remember {safe(item["name"])}">{content}</a>'
+        )
         orphan_class = " memorial-card--orphan" if orphan else ""
         cards.append(
             f"""
@@ -857,6 +1067,7 @@ def build() -> None:
     build_dog_stars(site, archive)
     build_feature_videos(site, archive)
     tribute_links = build_tribute_pages(site, archive)
+    build_remembrance_page(site, archive)
     build_memorials(site, archive, tribute_links)
     build_picnics(site, archive)
     build_rescue_network(site, archive)

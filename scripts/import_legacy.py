@@ -241,26 +241,44 @@ def dog_stars() -> list[dict]:
 def memorials() -> list[dict]:
     page_url = "https://arsf.org/rainbow.html"
     soup = soup_for(page_url)
+    stylesheet = fetch("https://arsf.org/rainbow.css").decode(
+        "utf-8",
+        errors="replace",
+    )
+    orphan_stones = {
+        stone_id
+        for stone_id, rules in re.findall(
+            r"#(stone\d+)\s*\{([^}]*)\}",
+            stylesheet,
+            flags=re.I | re.S,
+        )
+        if re.search(r"border\s*:\s*2px\s+red\s+solid", rules, flags=re.I)
+    }
     records = []
     seen = set()
     for stone in soup.find_all("div", id=re.compile(r"^stone\d+$", re.I)):
         image = stone.find("img")
-        if not image:
+        image_url = absolute(page_url, image.get("src")) if image else None
+        if image_url and image_url in seen:
             continue
-        image_url = absolute(page_url, image.get("src"))
-        if not image_url or image_url in seen:
-            continue
-        seen.add(image_url)
-        link = image.find_parent("a")
+        if image_url:
+            seen.add(image_url)
+        link = image.find_parent("a") if image else stone.find("a", href=True)
         base = soup.find(id=f"{stone.get('id')}_base")
         caption = clean(base.get_text(" ", strip=True)) if base else ""
         strong = stone.find("strong")
-        name = clean(strong.get_text(" ", strip=True)) if strong else image_name(image)
+        name = (
+            clean(next(strong.stripped_strings, ""))
+            if strong
+            else image_name(image) if image else "Remembered Akita"
+        )
         records.append(
             {
+                "source_id": stone.get("id"),
                 "name": name,
                 "caption": caption,
                 "image": image_url,
+                "orphan": stone.get("id") in orphan_stones,
                 "tribute_url": absolute(page_url, link.get("href")) if link else None,
                 "source_url": page_url,
             }
@@ -468,6 +486,9 @@ def main() -> None:
             "html_pages": len(html_pages),
             "documents": len(documents),
             "picnic_images": sum(len(group["images"]) for group in picnic_groups),
+            "orphan_memorials": sum(
+                bool(item["orphan"]) for item in memorial_records
+            ),
         },
         "happy_tails": happy_tails(),
         "dog_stars": dog_stars(),

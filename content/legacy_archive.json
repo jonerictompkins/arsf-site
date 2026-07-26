@@ -5,7 +5,8 @@
     "sitemap_urls": 461,
     "html_pages": 61,
     "documents": 7,
-    "picnic_images": 387
+    "picnic_images": 387,
+    "orphan_memorials": 77
   },
   "happy_tails": [
     {
@@ -1386,1178 +1387,1523 @@
   ],
   "memorials": [
     {
+      "source_id": "stone1",
       "name": "Myles",
       "caption": "Click Photo 2000 - 2013",
       "image": "https://arsf.org/memorials/myles/myles-fla.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/myles_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone2",
       "name": "Obi",
       "caption": "Click Photo 2002 - 2013",
       "image": "https://arsf.org/memorials/obi.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/obi_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone3",
       "name": "Lady",
       "caption": "Click Photo 1992 - 2006",
       "image": "https://arsf.org/memorials/lady-3.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/lady_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone4",
       "name": "Joker",
       "caption": "Click Photo 1998 - 2012",
       "image": "https://arsf.org/memorials/Joker-1c.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/joker_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone5",
       "name": "Osa",
       "caption": "Click Photo 1999 - 2012",
       "image": "https://arsf.org/memorials/osa-1.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/osa_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone6",
       "name": "Ichi-ban",
       "caption": "Click Photo 1990 - 2004",
       "image": "https://arsf.org/memorials/ichi-ban-6.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/ichiban_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone7",
       "name": "Sargent",
       "caption": "Click Photo 1998 - 2011",
       "image": "https://arsf.org/memorials/sargent-2.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/sargent_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone8",
       "name": "Taz",
       "caption": "Click to see his video",
       "image": "https://arsf.org/memorials/taz_memorial.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/taz.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone9",
       "name": "Bear",
       "caption": "Click Photo Crossed 9-22-13",
       "image": "https://arsf.org/memorials/beeson_family/bear.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/bear_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone10",
       "name": "Fonzie",
       "caption": "Crossed 6-18-14",
       "image": "https://arsf.org/memorials/fonzie1.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone11",
       "name": "Anna Marie",
       "caption": "2000 - 2014",
       "image": "https://arsf.org/memorials/anna%20marie.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone12",
       "name": "Milkshake",
       "caption": "2000 - 2014",
       "image": "https://arsf.org/memorials/milkshake2.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone13",
+      "name": "King",
+      "caption": "Crossed 7/2014",
+      "image": null,
+      "orphan": true,
+      "tribute_url": null,
+      "source_url": "https://arsf.org/rainbow.html"
+    },
+    {
+      "source_id": "stone14",
       "name": "Piper",
       "caption": "Click Photo 2001 - 2014",
       "image": "https://arsf.org/memorials/piper.jpg",
+      "orphan": true,
       "tribute_url": "https://arsf.org/memorials/piper_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
-      "name": "Kita Saved only to bloat",
+      "source_id": "stone15",
+      "name": "Kita",
       "caption": "Crossed in loving arms 10/10/14",
       "image": "https://arsf.org/memorials/kita.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone16",
       "name": "Denali",
       "caption": "Bloated 10/26/14",
       "image": "https://arsf.org/memorials/denali.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone17",
       "name": "Miko",
       "caption": "Crossed 12/2014",
       "image": "https://arsf.org/Images/Miko.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone18",
       "name": "Moltz",
       "caption": "Click Photo 12/17/14",
       "image": "https://arsf.org/Images/happy_tails_photos/moltz.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/moltz_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone19",
       "name": "Topaz",
       "caption": "Click Photo 2/14/15",
       "image": "https://arsf.org/memorials/topaz2.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/topaz_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone20",
       "name": "Georgia",
       "caption": "Click Photo Bloated 1/2015",
       "image": "https://arsf.org/memorials/georgia.jpeg",
+      "orphan": true,
       "tribute_url": "https://arsf.org/memorials/georgia_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone21",
       "name": "Kawolski",
       "caption": "Crossed 1/2015",
       "image": "https://arsf.org/memorials/kawolski.jpeg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone22",
       "name": "Tulo",
       "caption": "Crossed 3/2/2015",
       "image": "https://arsf.org/memorials/Tulo.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone23",
       "name": "Fannie Mae",
       "caption": "Crossed 3/31/2015",
       "image": "https://arsf.org/memorials/fannie_mae.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone24",
       "name": "Kuma",
       "caption": "Crossed In Loving Arms 3/15/2015",
       "image": "https://arsf.org/memorials/kuma1.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone25",
       "name": "Babe",
       "caption": "Click Photo 2004 - 2105",
       "image": "https://arsf.org/memorials/babe/babe1.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/babe/babe_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone26",
       "name": "Niko",
       "caption": "Click Photo 2003 - 2015",
       "image": "https://arsf.org/memorials/Niko/niko2.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/Niko/niko_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone27",
       "name": "Molly",
       "caption": "Loyal Companion and Friend",
       "image": "https://arsf.org/memorials/molly.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone28",
       "name": "Essie",
       "caption": "Crossed 6/25/2015",
       "image": "https://arsf.org/memorials/essie.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone29",
       "name": "Atlas",
       "caption": "Crossed 6/22/2015",
       "image": "https://arsf.org/memorials/Atlas.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone30",
       "name": "Sting",
       "caption": "Will Be Missed",
       "image": "https://arsf.org/memorials/Sting.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone31",
       "name": "Sarge",
       "caption": "Crossed In Loving Arms",
       "image": "https://arsf.org/memorials/Sarge.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone32",
       "name": "Cletus",
       "caption": "You will be missed!",
       "image": "https://arsf.org/memorials/cletus1.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone33",
       "name": "Midnight",
       "caption": "Never Given The Chance you Deserved :(",
       "image": "https://arsf.org/memorials/midnight2.png",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone34",
       "name": "Tina",
       "caption": "Will be missed by ALL!",
       "image": "https://arsf.org/memorials/tina_rip.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone35",
       "name": "Mamma Tampa",
       "caption": "You will be missed!",
       "image": "https://arsf.org/memorials/mamma_tampa.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone36",
       "name": "Tora",
       "caption": "Click Photo 8/17/16",
       "image": "https://arsf.org/memorials/tora_rip.jpg",
+      "orphan": true,
       "tribute_url": "https://arsf.org/memorials/tora_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone37",
       "name": "Sassy",
       "caption": "Click Photo Bloated 8/31/16",
       "image": "https://arsf.org/memorials/Sassy.jpg",
+      "orphan": true,
       "tribute_url": "https://arsf.org/memorials/sassy_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone38",
       "name": "Tai Tai",
       "caption": "Click Photo 2002 - 2016",
       "image": "https://arsf.org/memorials/tai_tai_memorial/tai.JPG",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/tai_tai_memorial/tai_tai_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone39",
       "name": "Christopher",
       "caption": "Click Photo 9/7/16",
       "image": "https://arsf.org/memorials/christopher.jpg",
+      "orphan": true,
       "tribute_url": "https://arsf.org/memorials/christopher_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone40",
       "name": "Keiko",
       "caption": "Click Photo 9/15/16",
       "image": "https://arsf.org/memorials/keiko_tribute/keiko_rip.jpg",
+      "orphan": true,
       "tribute_url": "https://arsf.org/memorials/keiko_tribute/keiko_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone41",
       "name": "Rex",
       "caption": "Click Photo 9/26/16",
       "image": "https://arsf.org/memorials/rex_tribute/rex1.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/rex_tribute/rex_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone42",
       "name": "Sugar",
       "caption": "Click Photo 10/4/16",
       "image": "https://arsf.org/memorials/sugar_tribute/sugar1.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/sugar_tribute/sugar_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone43",
       "name": "Piper",
       "caption": "Click Photo 10/10/16",
       "image": "https://arsf.org/memorials/piper_tribute/piper10.jpg",
+      "orphan": true,
       "tribute_url": "https://arsf.org/memorials/piper_tribute/piper_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone44",
       "name": "Bailey",
       "caption": "Will be missed forever. Crossed 10/31/16",
       "image": "https://arsf.org/memorials/bailey_memorial.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone45",
       "name": "Sid",
       "caption": "Sadly lost to bloat 2/15/17",
       "image": "https://arsf.org/memorials/sid1.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone46",
       "name": "Becket",
       "caption": "Crossed In Loving Arms 2/17/17",
       "image": "https://arsf.org/memorials/becket_obit.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone47",
       "name": "Satchet",
       "caption": "Will be missed by all. Crossed 2/26/16",
       "image": "https://arsf.org/memorials/satchet.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone48",
       "name": "Deacon / Publix",
       "caption": "Sadly crossed 2/16/17",
       "image": "https://arsf.org/memorials/deacon_publix.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone49",
       "name": "Swag",
       "caption": "Crossed Peacefully & Loved 2/28/17",
       "image": "https://arsf.org/memorials/swag.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone50",
       "name": "Mae",
       "caption": "Crossed Loved Suddenly 3/26/17",
       "image": "https://arsf.org/memorials/mae.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone51",
       "name": "Nori",
       "caption": "Crossed Peacefully 4/29/17",
       "image": "https://arsf.org/memorials/nori_rainbow.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone52",
       "name": "Dolly",
       "caption": "Crossed In Loving Arms 5/27/17",
       "image": "https://arsf.org/memorials/dolly_obit__7_12_17.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone53",
       "name": "Larry",
       "caption": "Crossed In Loving Hands 8/3/17",
       "image": "https://arsf.org/memorials/larry.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone54",
       "name": "Rosa",
       "caption": "Crossed In Loving Arms 8/14/17",
       "image": "https://arsf.org/memorials/Rosa.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone55",
       "name": "Brooke",
       "caption": "Sadly bloated 9/26/17",
       "image": "https://arsf.org/memorials/brooke2.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone56",
       "name": "Jack",
       "caption": "Crossed In Loving Arms 10/30/17",
       "image": "https://arsf.org/memorials/jack.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone57",
       "name": "Nori",
       "caption": "Sadly lost to bloat 11/22/17",
       "image": "https://arsf.org/memorials/nori1.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone58",
       "name": "Wendy",
       "caption": "Sadly bloated 4/12/18",
       "image": "https://arsf.org/memorials/wendy3.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone59",
       "name": "T Man",
       "caption": "Crossed In Loving Arms 6/8/18",
       "image": "https://arsf.org/memorials/tee_man2.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone60",
       "name": "Nelly",
       "caption": "Crossed In Loving Arms 6/12/18",
       "image": "https://arsf.org/memorials/nelly_crop.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone61",
       "name": "Cijobe",
       "caption": "Crossed In Loving Arms 7/11/18",
       "image": "https://arsf.org/memorials/cijobe_memorial.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone62",
       "name": "Ghost",
       "caption": "Crossed Peacefully 12/13/18",
       "image": "https://arsf.org/memorials/ghost_memorial.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone63",
       "name": "Lusuki",
       "caption": "Crossed In Loving Arms 3/16/19",
       "image": "https://arsf.org/memorials/lasuki_3_16_bloat.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone64",
       "name": "Sweet Pea",
       "caption": "Crossed In Loving Arms 5/12/19",
       "image": "https://arsf.org/memorials/sweet_pea_5_12_19.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone65",
       "name": "Champ",
       "caption": "Crossed In Loving Arms 6/10/19",
       "image": "https://arsf.org/memorials/champ_memorial_6_10.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone66",
       "name": "Annie",
       "caption": "Crossed Peacefully 6/25/19",
       "image": "https://arsf.org/memorials/annie_memorial_6_25_19.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone67",
       "name": "Katy",
       "caption": "Crossed In Loving Arms 8/9/19",
       "image": "https://arsf.org/memorials/katy_memorial_8-9-19.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone68",
       "name": "Diva",
       "caption": "Crossed In Loving Arms 11/4/19",
       "image": "https://arsf.org/memorials/diva1.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone69",
       "name": "Oscar",
       "caption": "Crossed In Loving Arms 12/9/19",
       "image": "https://arsf.org/memorials/oscar_rainbow_crop.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone70",
       "name": "Wesley",
       "caption": "Sadly Lost His Battle 1/8/20",
       "image": "https://arsf.org/memorials/wesley_memorial.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone71",
       "name": "Jatzu",
       "caption": "Crossed In Loving Arms 1/20/20",
       "image": "https://arsf.org/memorials/jatzu_memorial_1_20_20.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone72",
       "name": "Dollar",
       "caption": "Sadly Bloated 2/8/20",
       "image": "https://arsf.org/memorials/dollar_memorial_bloat_2_8_20.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone73",
       "name": "Takara",
       "caption": "Crossed In Loving Arms 2/10/20",
       "image": "https://arsf.org/memorials/Takara_2_10_20.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone74",
       "name": "Manny",
       "caption": "Crossed In Loving Arms 2/18/20",
       "image": "https://arsf.org/memorials/manny_memorial_2_18_20.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone75",
       "name": "Jemma",
       "caption": "Crossed In Loving Arms 3/6/20",
       "image": "https://arsf.org/memorials/jemma_diane_3_6_2_memorial.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone76",
       "name": "Honey B.",
       "caption": "Crossed In Loving Arms 3/9/20",
       "image": "https://arsf.org/memorials/Honey_B_memorial_3_9_20.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone77",
       "name": "Perry",
       "caption": "Sadly Bloated 3/22/20",
       "image": "https://arsf.org/memorials/perry_memorial_3_22_20.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone78",
       "name": "Denim",
       "caption": "Crossed In Loving Arms 4/24/20",
       "image": "https://arsf.org/memorials/denim_4_23_20_memorial.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone79",
       "name": "Merci",
       "caption": "Sadly Bloated 4/25/20",
       "image": "https://arsf.org/memorials/merci_memorial_bloat_4_25_20.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone80",
       "name": "Jewlz",
       "caption": "Lived and Loved 4/15/05 - 6/19/20",
       "image": "https://arsf.org/memorials/jewlz_41505_61920_rainbow.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone81",
       "name": "Zori",
       "caption": "Crossed To Early 9/4/20",
       "image": "https://arsf.org/memorials/zori_memorial_9_4_20.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone82",
       "name": "Laska",
       "caption": "In Memorial",
       "image": "https://arsf.org/memorials/laska_memorial.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone83",
       "name": "Umbria",
       "caption": "Crossed In Loving Arms 10/8/20",
       "image": "https://arsf.org/memorials/umbria_memorial_10_8_20.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone84",
       "name": "Tani",
       "caption": "Passed In Loving Arms 10/10/20",
       "image": "https://arsf.org/memorials/tani_memorial1_10_10_20.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone85",
       "name": "Bear",
       "caption": "Click Photo",
       "image": "https://arsf.org/memorials/bear/bear_memorial_10_18_20.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/bear/bear_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone86",
       "name": "St. Sampson",
       "caption": "Wrapped In Love 10/22/20",
       "image": "https://arsf.org/memorials/st_sampson_10_22_20_memorial.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone87",
       "name": "Bruin",
       "caption": "Crossed In Loving Arms 10/23/20",
       "image": "https://arsf.org/memorials/bruin_memorial_10_23_20.JPG",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone88",
       "name": "Loki",
       "caption": "Crossed In Loving Arms 10/30/20",
       "image": "https://arsf.org/memorials/loki_memorial_10_30_20.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone89",
       "name": "Reesa",
       "caption": "Wrapped In Love 11/10/20",
       "image": "https://arsf.org/memorials/reesa_memorial_11_10_20.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone90",
       "name": "Kibbi",
       "caption": "Taken Too Early 11/15/20",
       "image": "https://arsf.org/memorials/kibbi_memorial_11_15_20.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone91",
       "name": "Hilo",
       "caption": "Click Photo 11/25/20",
       "image": "https://arsf.org/memorials/hilo_memorial/hilo_memorial_stone_11_25_20.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/hilo_memorial/hilo_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone92",
       "name": "Saki",
       "caption": "Crossed In Loving Arms 12/21/20",
       "image": "https://arsf.org/memorials/saki_obit_12_21_20.png",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone93",
       "name": "Aggie",
       "caption": "Crossed Wrapped In Love 1/5/21",
       "image": "https://arsf.org/memorials/aggie_memorial_1_5_21.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone94",
       "name": "Teddy",
       "caption": "Click Photo 12/22/20",
       "image": "https://arsf.org/memorials/teddy_rainbow_12_22_20.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone95",
       "name": "Bindi Sue",
       "caption": "Crossed In Loving Arms 1/29/21",
       "image": "https://arsf.org/memorials/bindi_sue_rainbow_1_29_21.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone96",
       "name": "Ty",
       "caption": "Crossed Too Early 2/15/21",
       "image": "https://arsf.org/memorials/ty2_memorial_2_15_2021.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone97",
       "name": "Salty",
       "caption": "Click Photo 2/17/20",
       "image": "https://arsf.org/memorials/salty_memorial1_1_17_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone98",
       "name": "Major",
       "caption": "Crossed In Loving Arms 2/25/21",
       "image": "https://arsf.org/memorials/major_rainbow_3_25_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone99",
       "name": "Hiro",
       "caption": "He Left Us Too Early 4/8/21",
       "image": "https://arsf.org/memorials/hiro1_crop_memorial.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone100",
       "name": "Hoss",
       "caption": "Click Photo 4/13/21",
       "image": "https://arsf.org/memorials/hoss_memorial_4_13_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone101",
       "name": "Lou",
       "caption": "Sadly Bloated 4/16/21",
       "image": "https://arsf.org/memorials/lou_memorial_4_16_21.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone102",
       "name": "Ky",
       "caption": "Crossed In Loving Arms 4/19/21",
       "image": "https://arsf.org/memorials/ky_memorial_4_19_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone103",
       "name": "Kane",
       "caption": "Click Photo 6/23/21",
       "image": "https://arsf.org/Images/happy_tails_photos/kane_memorial_6_23_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone104",
       "name": "Buster",
       "caption": "Couldn't Have Been Loved More 6/28/21",
       "image": "https://arsf.org/Images/happy_tails_photos/buster_memorial_6_28_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone105",
       "name": "Danny Boy",
       "caption": "Left Us Wrapped In Love 6/27/21",
       "image": "https://arsf.org/memorials/danny_boy_memorial_6_27_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone106",
       "name": "Miah",
       "caption": "Click Photo 6/23/21",
       "image": "https://arsf.org/memorials/miah_memorial_6_28_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone107",
       "name": "Samson",
       "caption": "Left Us Wrapped In Love 7/31/21",
       "image": "https://arsf.org/memorials/samson_7_31_21_memorial.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone108",
       "name": "Cogar",
       "caption": "Crossed In Loving Arms 8/14/21",
       "image": "https://arsf.org/memorials/cogar_memorial_8_14_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone109",
       "name": "Yoshi",
       "caption": "Crossed Wrapped In Love and Whipped Cream 8/18/21",
       "image": "https://arsf.org/memorials/yoshi_crop.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone110",
       "name": "Kahuna",
       "caption": "Left Us Wrapped In Love 8/28/21",
       "image": "https://arsf.org/memorials/kahuna_memorial_8_28_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone111",
       "name": "Sockee",
       "caption": "Couldn't Have Been Loved More 9/18/21",
       "image": "https://arsf.org/memorials/sockee_memorial_9_18_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone112",
       "name": "Ginger",
       "caption": "Crossed Wrapped In Love and Whipped Cream 8/22/21",
       "image": "https://arsf.org/memorials/ginger_memorial_9_22_21.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone113",
       "name": "Cooper",
       "caption": "Crossed Wrapped In Love 9/22/21",
       "image": "https://arsf.org/memorials/cooper_memorial_9_22_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone114",
       "name": "Shitara",
       "caption": "Crossed In Loving Arms 12/1/21",
       "image": "https://arsf.org/memorials/shitara_bridge_12_1_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone115",
       "name": "Charlie Rango",
       "caption": "Left No Toy Unburied 12/8/21",
       "image": "https://arsf.org/memorials/charlie_rango2.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone116",
       "name": "Keeno",
       "caption": "Crossed In Loving Arms 3/2019",
       "image": "https://arsf.org/memorials/keno_bridge_3_2019.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone117",
       "name": "Cato",
       "caption": "Crossed In Loving Arms 11/2021",
       "image": "https://arsf.org/memorials/cato_bridge_11_21.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone118",
       "name": "Riley",
       "caption": "Passed Peacefully In His Sleep 12/24/21",
       "image": "https://arsf.org/memorials/riley_memorial_12_23_21.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone119",
       "name": "Mocha",
       "caption": "Pampered On Her Final Day 6/2017",
       "image": "https://arsf.org/memorials/mocha_memorial_.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone120",
       "name": "Bella",
       "caption": "Could Not Have Been Loved More 1/4/2022",
       "image": "https://arsf.org/memorials/bella_memorial_1_4_22.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone121",
       "name": "Chloe",
       "caption": "Crossed With Dignity 1/13/21",
       "image": "https://arsf.org/memorials/chloe_memorial_1_13_22.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone122",
       "name": "Bronson",
       "caption": "Will Be Loved Forever 2/2/2022",
       "image": "https://arsf.org/memorials/bronson_memorial_2_2_22.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone123",
       "name": "Snow Queen",
       "caption": "Crossed In Loving Arms 3/12/2022",
       "image": "https://arsf.org/memorials/snow_queen_memorial_3_12_22.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone124",
       "name": "Thelma",
       "caption": "Left Before Her Time 4/13/22",
       "image": "https://arsf.org/memorials/thelma_4_13_22_memorial.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone125",
       "name": "Goji",
       "caption": "Crossed In Loving Arms 2/28/2022",
       "image": "https://arsf.org/memorials/goji_memorial_2_28_22.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone126",
       "name": "Merlin",
       "caption": "Will Not Be Forgotten 5/10/2022",
       "image": "https://arsf.org/memorials/merlin_memorial_5_10_22.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone127",
       "name": "Roo",
       "caption": "Will Be Loved Forever 5/11/22",
       "image": "https://arsf.org/memorials/roo_memorial_5_11_22.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone128",
       "name": "Chanda",
       "caption": "On Her Own Timeline 5/24/2022",
       "image": "https://arsf.org/memorials/chanda_memorial_5_24_22.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone129",
       "name": "Ginger",
       "caption": "A Special Girl 6/17/2022",
       "image": "https://arsf.org/memorials/ginger_memorial_6_17_22.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone130",
       "name": "Kuro",
       "caption": "Crossed In Loving Arms 5/20/22",
       "image": "https://arsf.org/memorials/kuro_memorial_5_20_22.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone131",
       "name": "Kyng",
       "caption": "Remembered Forever 9/6/2022",
       "image": "https://arsf.org/memorials/kyng_memorial_9_6_22.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone132",
       "name": "Gideon",
       "caption": "Will Be Loved Forever 9/19/2022",
       "image": "https://arsf.org/memorials/gideon_9_19_22_memorial.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone133",
       "name": "Yogi",
       "caption": "Will Not Be Forgotten 9/23/22",
       "image": "https://arsf.org/memorials/yogi_9_23_22_memorial.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone134",
       "name": "Penny",
       "caption": "Sadly Bloated 2/25/2023",
       "image": "https://arsf.org/memorials/penny_memorial_2_25_23.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone135",
       "name": "Sassy",
       "caption": "Crossed In Loving Arms 2/27/2023",
       "image": "https://arsf.org/memorials/sassy_memorial_2_27_23.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone136",
       "name": "Nehi",
       "caption": "Can Never Live Long Enough 12/26/22",
       "image": "https://arsf.org/memorials/nehi_memorial_12_26_22.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone137",
       "name": "Troy",
       "caption": "Crossed In Loving Arms 2/16/2023",
       "image": "https://arsf.org/memorials/troy_memorial_2_16_23.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone138",
       "name": "Tobey",
       "caption": "Will Be Sorely Missed 2/18/2023",
       "image": "https://arsf.org/memorials/tobey_memorial_2_18_23.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone139",
       "name": "Diego",
       "caption": "Left Before His Time 2/14/23",
       "image": "https://arsf.org/memorials/diego_memorial_2_14_23.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone140",
       "name": "Rah",
       "caption": "He Was A Special Character 3/25/2023",
       "image": "https://arsf.org/memorials/rah_memorial_3_25_23.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone141",
       "name": "Kinichi",
       "caption": "Loved By ALL 6/5/2023 (Cick On Pix)",
       "image": "https://arsf.org/memorials/kinichi_memorial_6_5_23.jpg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/hansel_gretel.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone142",
       "name": "Lexi",
       "caption": "Will Live On Forever 9/3/23",
       "image": "https://arsf.org/memorials/lexi_memorial_9_3_23.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone143",
       "name": "Black Bear",
       "caption": "Too Young To See The Bridge 10/20/2023",
       "image": "https://arsf.org/memorials/black_bear_memorial_10_20_23.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone144",
       "name": "Saphire",
       "caption": "Crossed Wrapped In Love 10/26/2023",
       "image": "https://arsf.org/memorials/saphire_memorial_10_26_23.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone145",
       "name": "Thunder",
       "caption": "Crossed In Loving Arms 12/17/23",
       "image": "https://arsf.org/memorials/thunder_memorial_12_17_23.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone146",
       "name": "Lilo",
       "caption": "Learned To Love Again 1/22/2024",
       "image": "https://arsf.org/memorials/lilo_memorial_1_22_24.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone147",
       "name": "Rosie",
       "caption": "Found True Love 1/29/2024",
       "image": "https://arsf.org/memorials/rosie_memorial_1_29_24.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone148",
       "name": "Hachi",
       "caption": "Loved Til The End 2/3/24",
       "image": "https://arsf.org/memorials/hachi_memorial_2_3_24.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone149",
       "name": "Grizzly",
       "caption": "Loyal Until His Last Breath 2/19/2024",
       "image": "https://arsf.org/memorials/grizzly_memorial_2_19_24.jpeg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone150",
       "name": "Alaska - Paco",
       "caption": "Crossed Wrapped In Love 2/22/2024",
       "image": "https://arsf.org/memorials/alaska_paco_memorial_2_22_24.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone151",
       "name": "Peaches",
       "caption": "Crossed In Loving Arms 3/27/24",
       "image": "https://arsf.org/memorials/peaches_memorial_3_27_24.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone152",
       "name": "Frankie",
       "caption": "Lived Life On His Own Terms 4/22/2024",
       "image": "https://arsf.org/memorials/frankie_memorial_4_22_24.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone153",
       "name": "Kaji",
       "caption": "Click Photo 8/20/2024",
       "image": "https://arsf.org/memorials/kaji_memorial_8_20_24.jpeg",
+      "orphan": false,
       "tribute_url": "https://arsf.org/memorials/kaji_tribute/kaji_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone154",
       "name": "Magic",
       "caption": "Before Her Time 8/25/24",
       "image": "https://arsf.org/memorials/magic_memorial_8_25_24.jfif",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone155",
       "name": "Mama Bear",
       "caption": "Crossed In Loving Arms 11/5/2024",
       "image": "https://arsf.org/memorials/mama_bear_11_5_24.jfif",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone156",
       "name": "Addy",
       "caption": "Crossed Wrapped In Love 11/14/2024",
       "image": "https://arsf.org/memorials/addy1_memorial_11_14_24.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone157",
       "name": "Bear Bear",
       "caption": "Click Photo 3/4/25",
       "image": "https://arsf.org/memorials/bear_bear_memorial_3_4_25.jpg",
+      "orphan": true,
       "tribute_url": "https://arsf.org/memorials/bear_bear_tribute/bear_bear_tribute.html",
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone158",
       "name": "Jewel",
       "caption": "Crossed In Loving Arms 8/14/2025",
       "image": "https://arsf.org/memorials/jewel5_memorial.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone159",
       "name": "Ollie",
       "caption": "Most loving and caring Akita 8/23/2025",
       "image": "https://arsf.org/memorials/ollie_memorial_8_23_25.jpeg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone160",
       "name": "Angus",
       "caption": "Crossed in Very Loving Arms 3/12/26",
       "image": "https://arsf.org/memorials/angus_memorial_3_12_26.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone161",
       "name": "Meeko",
       "caption": "Crossed In Loving Arms 3/22/2026",
       "image": "https://arsf.org/memorials/meeko_memorial_3_22_26.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone162",
       "name": "Carmella",
       "caption": "Most loving and caring Akita 8/23/2025",
       "image": "https://arsf.org/memorials/carmella_memorial_3_5_26.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone163",
       "name": "Maety",
       "caption": "A True Friend 4/1/26",
       "image": "https://arsf.org/memorials/maety_memorial_4_1_26.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone164",
       "name": "Yuki",
       "caption": "Suddenly Taken 3/21/2026",
       "image": "https://arsf.org/memorials/yuki_memorial_3_21_26.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone165",
       "name": "Beau",
       "caption": "Will Be Missed 3/24/2025",
       "image": "https://arsf.org/memorials/beau_memorial_3_24_26.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone166",
       "name": "Melody",
       "caption": "Nothing But Love 5/29/26",
       "image": "https://arsf.org/memorials/melody_memorial_5_29_26.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone167",
       "name": "Aki",
       "caption": "Loved Only One 6/20/2026",
       "image": "https://arsf.org/memorials/aki_memorial_6_20_26.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone168",
       "name": "Dale",
       "caption": "Crossed In Loving Arms 7/2/2026",
       "image": "https://arsf.org/memorials/dale_memorial_7_2_26.jpg",
+      "orphan": true,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     },
     {
+      "source_id": "stone169",
       "name": "Kigh",
       "caption": "Loyal To His Core 7/14/26",
       "image": "https://arsf.org/memorials/kigh_memorial_7_14_26.jpg",
+      "orphan": false,
       "tribute_url": null,
       "source_url": "https://arsf.org/rainbow.html"
     }

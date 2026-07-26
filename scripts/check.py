@@ -277,6 +277,45 @@ else:
             if not resolved.exists():
                 error(f"{label}: local reference not found: {reference}")
 
+memorial_output = output_root / "memorials"
+memorial_index = memorial_output / "index.html"
+remembrance_page = memorial_output / "remembering" / "index.html"
+expected_tribute_pages = sum(
+    bool(item.get("tribute_url")) for item in archive.get("memorials", [])
+)
+generated_tribute_pages = [
+    path
+    for path in memorial_output.glob("*/index.html")
+    if path != remembrance_page
+]
+if len(generated_tribute_pages) != expected_tribute_pages:
+    error(
+        "dist/memorials: expected one internal page for each source tribute "
+        f"({expected_tribute_pages}), found {len(generated_tribute_pages)}"
+    )
+if not remembrance_page.is_file():
+    error("dist/memorials/remembering/index.html: shared remembrance is missing")
+if memorial_index.is_file():
+    memorial_markup = memorial_index.read_text(encoding="utf-8")
+    expected_shared_links = sum(
+        not item.get("tribute_url") for item in archive.get("memorials", [])
+    )
+    shared_links = memorial_markup.count('href="./remembering/"')
+    if shared_links != expected_shared_links:
+        error(
+            "dist/memorials/index.html: shared remembrance link count does not "
+            f"match records without source tributes ({shared_links} != "
+            f"{expected_shared_links})"
+        )
+    orphan_cards = memorial_markup.count(
+        'class="memorial-card memorial-card--orphan"'
+    )
+    if orphan_cards != orphan_count:
+        error(
+            "dist/memorials/index.html: orphan card count does not match "
+            f"archive ({orphan_cards} != {orphan_count})"
+        )
+
 stylesheet = ROOT / "dist" / "styles" / "site.css"
 if stylesheet.is_file():
     css = stylesheet.read_text(encoding="utf-8")

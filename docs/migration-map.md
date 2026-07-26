@@ -53,7 +53,7 @@ The first preservation pass is implemented:
 
 1. Breed history, advantages of rescue, Akita Coach, rehoming, placement, ethics, health, ARSF history, and Maddie's Fund resources are internal pages.
 2. Happy Tails and Dog Stars are structured, searchable collections.
-3. The memorial index and 26 detailed tributes are presented in the new framework.
+3. The memorial index, 26 detailed written or photographic tributes, 2 film remembrances, and a shared remembrance for all other Akitas are presented in the new framework.
 4. Picnic albums, feature videos, rescue-network entries, and PDF links are discoverable from the new navigation.
 5. Historical media remains linked to ARSF's public HTTPS assets to keep the review repository small and preserve source provenance.
 

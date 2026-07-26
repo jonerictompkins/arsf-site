@@ -632,6 +632,7 @@ def build_tribute_pages(site: dict, archive: dict) -> dict[str, str]:
             or f"A tribute preserved by the ARSF community for {tribute['name']}.",
             eyebrow="Always remembered",
             group="Memorials",
+            page_class="tribute-layout",
             body=body,
         )
         internal_links[tribute["source_url"]] = f"./{tribute['slug']}/"
@@ -701,6 +702,7 @@ def build_tribute_pages(site: dict, archive: dict) -> dict[str, str]:
             description=caption,
             eyebrow="Always remembered",
             group="Memorials",
+            page_class="tribute-layout",
             body=body,
         )
         internal_links[source_url] = f"./{slug}/"

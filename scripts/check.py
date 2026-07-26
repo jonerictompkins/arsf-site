@@ -301,6 +301,13 @@ if len(generated_tribute_pages) != expected_tribute_pages:
         "dist/memorials: expected one internal page for each source tribute "
         f"({expected_tribute_pages}), found {len(generated_tribute_pages)}"
     )
+for page in generated_tribute_pages:
+    page_markup = page.read_text(encoding="utf-8")
+    label = page.relative_to(ROOT)
+    if '<body class="tribute-layout">' not in page_markup:
+        error(f"{label}: shared tribute color theme is missing")
+    if 'class="page-section memorial-tribute"' not in page_markup:
+        error(f"{label}: tribute story layout is missing")
 if len(generated_remembrance_pages) != expected_remembrance_pages:
     error(
         "dist/memorials/remembering: expected one static page for each "

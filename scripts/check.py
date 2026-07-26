@@ -295,12 +295,51 @@ if len(generated_tribute_pages) != expected_tribute_pages:
     )
 if not remembrance_page.is_file():
     error("dist/memorials/remembering/index.html: shared remembrance is missing")
+else:
+    remembrance_markup = remembrance_page.read_text(encoding="utf-8")
+    data_start = '<script type="application/json" id="remembrance-records">'
+    data_end = "</script>"
+    if data_start not in remembrance_markup:
+        error(
+            "dist/memorials/remembering/index.html: contextual memorial data "
+            "is missing"
+        )
+    else:
+        raw_data = remembrance_markup.split(data_start, 1)[1].split(data_end, 1)[0]
+        try:
+            remembrance_records = json.loads(raw_data)
+        except json.JSONDecodeError as exc:
+            error(
+                "dist/memorials/remembering/index.html: contextual memorial "
+                f"data is invalid JSON: {exc}"
+            )
+            remembrance_records = []
+        expected_context_records = sum(
+            not item.get("tribute_url")
+            for item in archive.get("memorials", [])
+        )
+        if len(remembrance_records) != expected_context_records:
+            error(
+                "dist/memorials/remembering/index.html: contextual record "
+                f"count does not match shared memorials "
+                f"({len(remembrance_records)} != {expected_context_records})"
+            )
+        context_ids = {
+            item.get("id")
+            for item in remembrance_records
+            if isinstance(item, dict)
+        }
+        if len(context_ids) != len(remembrance_records):
+            error(
+                "dist/memorials/remembering/index.html: contextual memorial "
+                "IDs must be unique"
+            )
 if memorial_index.is_file():
     memorial_markup = memorial_index.read_text(encoding="utf-8")
     expected_shared_links = sum(
         not item.get("tribute_url") for item in archive.get("memorials", [])
     )
-    shared_links = memorial_markup.count('href="./remembering/"')
+    shared_links = memorial_markup.count('href="./remembering/?memorial=')
     if shared_links != expected_shared_links:
         error(
             "dist/memorials/index.html: shared remembrance link count does not "

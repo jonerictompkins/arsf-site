@@ -40,7 +40,7 @@ The public sitemap and linked source pages were normalized into the prototype on
 - 169 memorial entries, including the original no-photo remembrance
 - 77 memorials retain ARSF's red-border orphan distinction
 - 26 individual written or photographic tributes, plus 2 film remembrances
-- 1 shared remembrance page for the 141 Akitas without an original individual tribute
+- 1 shared remembrance page for the 141 Akitas without an original individual tribute; each card contextualizes that page with the preserved name, photograph, source tagline, dates, and orphan-heart status
 - 6 feature videos
 - 4 picnic galleries containing 387 image references
 - 12 rescue-network records

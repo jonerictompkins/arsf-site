@@ -517,23 +517,79 @@ def build_memorials(
 ) -> None:
     cards = []
     for item in archive["memorials"]:
-        source = tribute_links.get(
-            item.get("tribute_url", ""),
-            item.get("tribute_url") or item["source_url"],
+        tribute_url = item.get("tribute_url")
+        source = tribute_links.get(tribute_url, tribute_url) if tribute_url else None
+        orphan = bool(item.get("orphan"))
+        caption = (
+            item["caption"]
+            .replace("Click Photo", "")
+            .replace("Click to see his video", "Featured in an ARSF video")
+            .strip()
         )
+        marker = (
+            """
+                <span class="orphan-marker">
+                  <span aria-hidden="true">♥</span>
+                  <span class="sr-only">ARSF orphan who never found a forever home</span>
+                </span>"""
+            if orphan
+            else ""
+        )
+        action = (
+            '<span class="memorial-card-link">Read their tribute '
+            '<span aria-hidden="true">→</span></span>'
+            if tribute_url
+            else '<span class="memorial-card-note">Remembered by the ARSF community</span>'
+        )
+        portrait = (
+            f'<img src="{safe(item["image"])}" alt="{safe(item["name"])}, remembered by the ARSF community" loading="lazy">'
+            if item.get("image")
+            else (
+                '<div class="memorial-photo-missing" role="img" '
+                f'aria-label="No photograph is available for {safe(item["name"])}">'
+                '<span>Remembered<br>with love</span></div>'
+            )
+        )
+        content = f"""
+            <div class="memorial-portrait">
+              {portrait}
+              {marker}
+            </div>
+            <div class="memorial-card-copy">
+              <span class="memorial-kicker">{"Held forever by ARSF" if orphan else "Always remembered"}</span>
+              <strong>{safe(item['name'])}</strong>
+              <p>{safe(caption or "A life remembered with love.")}</p>
+              {action}
+            </div>"""
+        if source:
+            content = (
+                f'<a href="{safe(source)}"{link_attributes(source)} '
+                f'aria-label="Read the tribute for {safe(item["name"])}">{content}</a>'
+            )
+        else:
+            content = f'<div class="memorial-card-inner">{content}</div>'
+        orphan_class = " memorial-card--orphan" if orphan else ""
         cards.append(
             f"""
-          <article class="memorial-card" data-search="{safe(item['name'])} {safe(item['caption'])}">
-            <a href="{safe(source)}" target="_blank" rel="noopener">
-              <img src="{safe(item['image'])}" alt="{safe(item['name'])}, remembered by the ARSF community" loading="lazy">
-              <span><strong>{safe(item['name'])}</strong><small>{safe(item['caption'].replace('Click Photo', '').strip())}</small></span>
-            </a>
+          <article class="memorial-card{orphan_class}" data-search="{safe(item['name'])} {safe(item['caption'])}">
+            {content}
           </article>"""
         )
+    orphan_count = sum(bool(item.get("orphan")) for item in archive["memorials"])
     body = f"""
       <section class="page-section memorial-page">
         <div class="shell">
-          <aside class="memorial-intro"><span aria-hidden="true">♥</span><p>A red border in the original archive identified an orphan who never found a forever home. Every name remains part of ARSF’s story.</p></aside>
+          <div class="memorial-dedication">
+            <div>
+              <p class="eyebrow">Every life held here mattered</p>
+              <h2>They changed the people who knew them.</h2>
+              <p>Some found the family they had been waiting for. Some were loved through rescue, foster care, and the final crossing. All of them remain woven into ARSF’s story.</p>
+            </div>
+            <aside class="orphan-legend">
+              <span class="orphan-marker orphan-marker--legend" aria-hidden="true">♥</span>
+              <p><strong>Held forever by ARSF</strong>The heart and red border honor {orphan_count} orphans who crossed without ever finding a forever home.</p>
+            </aside>
+          </div>
           {filter_toolbar("Find a memorial", "Search by name")}
           <div class="memorial-grid" data-filter-grid>{''.join(cards)}</div>
         </div>

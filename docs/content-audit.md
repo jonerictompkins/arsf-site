@@ -37,7 +37,8 @@ The public sitemap and linked source pages were normalized into the prototype on
 
 - 167 Happy Tails
 - 53 Dog Stars
-- 168 memorial entries
+- 169 memorial entries, including the original no-photo remembrance
+- 77 memorials retain ARSF's red-border orphan distinction
 - 26 individual tribute pages with preserved text and images
 - 6 feature videos
 - 4 picnic galleries containing 387 image references

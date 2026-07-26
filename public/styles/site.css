@@ -1536,78 +1536,209 @@ h3 {
   color: rgba(255, 255, 255, 0.6);
 }
 
-.memorial-intro {
+.memorial-dedication {
+  display: grid;
+  align-items: end;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+  gap: clamp(2rem, 7vw, 6rem);
+}
+
+.memorial-dedication h2 {
+  max-width: 12ch;
+  margin-bottom: 1.25rem;
+  color: var(--white);
+  font-size: clamp(2.5rem, 5vw, 4.7rem);
+}
+
+.memorial-dedication > div > p:last-child {
+  max-width: 42rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 1rem;
+}
+
+.orphan-legend {
   display: flex;
   align-items: center;
-  max-width: 47rem;
-  padding-bottom: 2rem;
-  color: rgba(255, 255, 255, 0.7);
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(213, 13, 3, 0.65);
+  border-radius: var(--radius-sm);
   gap: 1rem;
 }
 
-.memorial-intro > span {
-  display: grid;
-  flex: 0 0 auto;
-  width: 2.6rem;
-  height: 2.6rem;
-  color: var(--white);
-  background: var(--coral);
-  border-radius: 50%;
-  place-items: center;
+.orphan-legend p,
+.orphan-legend strong {
+  display: block;
 }
 
-.memorial-intro p {
+.orphan-legend p {
   margin: 0;
-  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.orphan-legend strong {
+  margin-bottom: 0.15rem;
+  color: var(--white);
+  font-size: 0.82rem;
 }
 
 .memorial-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 0.7rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.15rem;
 }
 
 .memorial-card {
+  position: relative;
   overflow: hidden;
-  background: #282826;
+  color: var(--white);
+  background: #252422;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-sm);
+  content-visibility: auto;
+  contain-intrinsic-size: 0 29rem;
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.memorial-card--orphan {
+  border: 2px solid var(--coral);
 }
 
 .memorial-card a {
+  height: 100%;
   display: block;
   color: var(--white);
   text-decoration: none;
+  transition: transform 180ms ease;
+}
+
+.memorial-card a:hover,
+.memorial-card a:focus-visible {
+  transform: translateY(-2px);
+}
+
+.memorial-card-inner {
+  height: 100%;
+}
+
+.memorial-portrait {
+  position: relative;
 }
 
 .memorial-card img {
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
-  filter: saturate(0.82);
+  object-position: center 35%;
+  filter: saturate(0.78) contrast(1.03);
 }
 
-.memorial-card span {
-  display: block;
-  padding: 0.8rem;
-}
-
-.memorial-card strong,
-.memorial-card small {
-  display: block;
-}
-
-.memorial-card strong {
-  font-family: Georgia, "Times New Roman", serif;
-}
-
-.memorial-card small {
-  overflow: hidden;
-  margin-top: 0.15rem;
+.memorial-photo-missing {
+  display: grid;
+  aspect-ratio: 1;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 0.62rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  background:
+    radial-gradient(circle at center, rgba(213, 13, 3, 0.18), transparent 36%),
+    linear-gradient(145deg, #302e2b, #1b1a19);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  place-items: center;
+  text-align: center;
+}
+
+.memorial-portrait::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: 38%;
+  background: linear-gradient(transparent, rgba(17, 17, 16, 0.52));
+  content: "";
+  pointer-events: none;
+}
+
+.orphan-marker {
+  position: absolute;
+  z-index: 1;
+  bottom: -1.35rem;
+  left: 50%;
+  display: grid;
+  width: 2.7rem;
+  height: 2.7rem;
+  color: var(--white);
+  background: var(--coral);
+  border: 4px solid #252422;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  place-items: center;
+  transform: translateX(-50%);
+}
+
+.orphan-marker--legend {
+  position: static;
+  flex: 0 0 auto;
+  width: 3rem;
+  height: 3rem;
+  border-color: var(--ink-deep);
+  transform: none;
+}
+
+.memorial-card-copy {
+  display: flex;
+  min-height: 12rem;
+  padding: 0.8rem;
+  flex-direction: column;
+}
+
+.memorial-card--orphan .memorial-card-copy {
+  padding-top: 1.65rem;
+}
+
+.memorial-kicker,
+.memorial-card-copy > strong,
+.memorial-card-link,
+.memorial-card-note {
+  display: block;
+}
+
+.memorial-kicker {
+  margin-bottom: 0.45rem;
+  color: var(--gold);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.memorial-card-copy > strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  line-height: 1.12;
+}
+
+.memorial-card-copy p {
+  margin: 0.65rem 0 1.3rem;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.memorial-card-link,
+.memorial-card-note {
+  margin-top: auto;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.67rem;
+  font-weight: 750;
+}
+
+.memorial-card-link {
+  color: var(--white);
 }
 
 .memorial-tribute {
@@ -1873,7 +2004,12 @@ h3 {
   }
 
   .memorial-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .memorial-dedication {
+    align-items: start;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2038,7 +2174,7 @@ h3 {
   }
 
   .memorial-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .source-note {

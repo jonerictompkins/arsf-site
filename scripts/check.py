@@ -196,6 +196,40 @@ for field in (
     if field not in archive or not archive[field]:
         error(f"content/legacy_archive.json: missing archive collection '{field}'")
 
+orphan_count = 0
+memorial_source_ids: set[str] = set()
+for index, memorial in enumerate(archive.get("memorials", []), start=1):
+    label = f"content/legacy_archive.json:memorial {index}"
+    if not isinstance(memorial, dict):
+        error(f"{label}: expected an object")
+        continue
+    require(
+        memorial,
+        ("source_id", "name", "caption", "orphan", "source_url"),
+        label,
+    )
+    if "image" not in memorial:
+        error(f"{label}: missing required field 'image'")
+    elif memorial["image"] is not None:
+        require_https(memorial["image"], f"{label}:image")
+    if memorial.get("orphan") is True:
+        orphan_count += 1
+    elif memorial.get("orphan") is not False:
+        error(f"{label}: orphan must be true or false")
+    source_id = memorial.get("source_id")
+    if source_id in memorial_source_ids:
+        error(f"{label}: duplicate source_id '{source_id}'")
+    elif source_id:
+        memorial_source_ids.add(source_id)
+expected_orphan_count = archive.get("inventory", {}).get("orphan_memorials")
+if archive.get("memorials") and not orphan_count:
+    error("content/legacy_archive.json: expected preserved orphan memorial markers")
+elif expected_orphan_count != orphan_count:
+    error(
+        "content/legacy_archive.json: inventory orphan count does not match "
+        f"the memorial records ({expected_orphan_count} != {orphan_count})"
+    )
+
 article_slugs: set[str] = set()
 for index, article in enumerate(archive.get("articles", []), start=1):
     label = f"content/legacy_archive.json:article {index}"

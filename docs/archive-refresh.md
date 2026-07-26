@@ -26,6 +26,7 @@ The importer:
 
 - downloads ARSF's public sitemap and selected public pages;
 - normalizes legacy punctuation and relative media URLs;
+- preserves the source stone ID and red-border orphan designation from ARSF's memorial stylesheet;
 - extracts archive records and full article text;
 - leaves media at its public ARSF HTTPS location;
 - does not submit forms, access private data, or alter the source site.

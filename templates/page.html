@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{page_description}}">
+    <meta name="theme-color" content="#171717">
+    <title>{{page_title}} | {{organization}}</title>
+    <link rel="icon" href="{{root}}images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="{{root}}styles/site.css">
+    <script src="{{root}}scripts/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="demo-bar" role="note">
+      <div class="shell">{{demo_notice}}</div>
+    </div>
+    {{site_header}}
+    <main id="main">
+      <section class="page-hero">
+        <div class="shell page-hero-grid">
+          <div>
+            <nav class="breadcrumbs" aria-label="Breadcrumb">
+              <a href="{{root}}">Home</a><span aria-hidden="true">/</span><span>{{page_group}}</span>
+            </nav>
+            <p class="eyebrow">{{page_eyebrow}}</p>
+            <h1>{{page_title}}</h1>
+          </div>
+          <p class="page-intro">{{page_description}}</p>
+        </div>
+      </section>
+      {{page_body}}
+    </main>
+    {{site_footer}}
+  </body>
+</html>

@@ -2,6 +2,8 @@
 
 An independent redesign prototype for the Akita Rescue Society of Florida. It is not connected to ARSF's production website or repository.
 
+The generated site currently contains 53 responsive pages spanning Akita education, rescue and placement, Happy Tails, Dog Stars, feature videos, memorials, picnic galleries, practical resources, and society information.
+
 ## Why this shape
 
 - The deployed site is plain static HTML, CSS, JavaScript, and images.
@@ -36,17 +38,21 @@ Then open `http://localhost:8080`.
 - Organization details and major links: `content/site.json`
 - Akita library collections: `content/resources.json`
 - Featured dog profiles: `content/dogs/*.json`
+- Imported public-site archive snapshot: `content/legacy_archive.json`
 - Dog photos: `public/images/dogs/`
 - Admin editor schema: `.pages.yml`
 
 When the repository is connected to GitHub, an approved editor can sign into [Pages CMS](https://app.pagescms.org), choose the repository, and edit these fields without touching code. Publishing and review rules will be finalized with ARSF before any production handoff.
 
-## Current boundaries
+Do not hand-edit `content/legacy_archive.json`. It is a generated preservation snapshot; see `docs/archive-refresh.md` for the deliberate refresh workflow.
 
-- This is the first page and migration foundation, not yet a production replacement.
+## Review boundaries
+
+- This is a public review environment, not yet ARSF's production replacement.
 - Adoption submissions go directly to ARSF's current Jotform and are never stored in this repository.
 - Donations still go to ARSF's existing Square site.
 - Dog profiles are a curated preview based on current public Petfinder listings; ARSF must confirm them before launch.
-- Archive links currently lead to the original ARSF pages while those collections are migrated.
+- Imported operational, medical, contact, and program details need ARSF review before an official launch.
+- Archive media remains linked to ARSF's public HTTPS assets; the structured text snapshot and generated pages live here.
 
-See `docs/content-audit.md`, `docs/migration-map.md`, `docs/deployment.md`, and `docs/admin-workflow.md` for the content and handoff plan.
+See `docs/content-audit.md`, `docs/migration-map.md`, `docs/archive-refresh.md`, `docs/deployment.md`, and `docs/admin-workflow.md` for the content and handoff plan.

@@ -19,7 +19,9 @@ The repository retains the change history. A final publishing workflow can eithe
 3. Upload story and archive photos into the separate archive media library.
 4. Save, preview, and publish through the same review workflow.
 
-As Happy Tails and memorials are migrated, they should become their own structured collections with names, dates, stories, images, and tags. Editors should never need to position cards or format a gallery by hand.
+Happy Tails, Dog Stars, memorials, tribute pages, videos, picnic galleries, rescue-network entries, and long-form resources have now been imported into a structured archive snapshot. The site turns those records into searchable collections and readable pages automatically.
+
+The imported snapshot is intentionally not exposed as one enormous editor form. It should be treated as preserved source material while the collections ARSF changes most often are promoted into smaller, purpose-built editor screens. Editors should never need to position cards or format a gallery by hand.
 
 ## Guardrails
 
@@ -34,6 +36,8 @@ As Happy Tails and memorials are migrated, they should become their own structur
 
 - Decide who may edit and who may publish.
 - Confirm the final repository visibility and the people who may access Pages CMS.
-- Replace prototype copy with ARSF-approved copy.
+- Review imported operational, medical, contact, and program copy with ARSF.
+- Confirm image, video, and story usage rights for an official production site.
 - Decide whether Petfinder remains the source of truth for all dog details or the new site owns featured summaries.
+- Choose the first archive collection Dorie should be able to edit routinely; Happy Tails is the strongest candidate.
 - Run a short usability session with Ms. Dorie using real update tasks.

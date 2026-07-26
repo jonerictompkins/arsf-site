@@ -47,11 +47,14 @@ The next technical step for a large archive is generated static search, not a da
 
 Adoption applications contain sensitive personal data. They should remain in ARSF's Jotform account and must not be copied into Git or a new database without a separate privacy, retention, access-control, and backup plan.
 
-## Migration order
+## Migration status
 
-1. Confirm brand, voice, contact details, current links, and the homepage direction.
-2. Migrate breed history, advantages, Akita Coach, rehoming, placement, and health resources.
-3. Build structured Happy Tails, Dog Stars, and Dorie-curated champion collections.
-4. Migrate memorials carefully, preserving original language and attribution.
-5. Bring in picnic albums, videos, partner rescues, and remaining downloads.
-6. Test routine updates with Dorie before choosing the production editor and publishing rules.
+The first preservation pass is implemented:
+
+1. Breed history, advantages of rescue, Akita Coach, rehoming, placement, ethics, health, ARSF history, and Maddie's Fund resources are internal pages.
+2. Happy Tails and Dog Stars are structured, searchable collections.
+3. The memorial index and 26 detailed tributes are presented in the new framework.
+4. Picnic albums, feature videos, rescue-network entries, and PDF links are discoverable from the new navigation.
+5. Historical media remains linked to ARSF's public HTTPS assets to keep the review repository small and preserve source provenance.
+
+Next is editorial migration, not bulk scraping: confirm current guidance, normalize the first frequently edited collection into Pages CMS, assemble Dorie's champion and breed-ambassador collection, and test routine updates with her before choosing final production publishing rules.

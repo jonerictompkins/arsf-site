@@ -31,9 +31,25 @@ Audit date: 2026-07-26
 5. Keep sensitive adoption applications out of the website repository.
 6. Migrate the long-form educational and historical archive collection by collection.
 
+## Imported inventory
+
+The public sitemap and linked source pages were normalized into the prototype on 2026-07-26:
+
+- 167 Happy Tails
+- 53 Dog Stars
+- 168 memorial entries
+- 26 individual tribute pages with preserved text and images
+- 6 feature videos
+- 4 picnic galleries containing 387 image references
+- 12 rescue-network records
+- 9 long-form society, breed, health, and placement articles
+- 7 PDF resources
+
+The resulting framework generates 53 responsive HTML pages. Search and filtering run entirely in the browser; no visitor data or application answers are stored.
+
 ## Content provenance
 
-The first-pass organization copy is adapted from public ARSF pages. Featured-dog facts and descriptions are condensed from public ARSF Petfinder listings. Prototype images were copied from ARSF's public website and public Petfinder listings for this independent review build. The exact ARSF logo was preserved from `Images/arsf_logo230x200.fw.png`; archive previews currently use Hisashi from Happy Tails, Magnolia from Dog Stars, and ARSF's Rainbow Bridge art. ARSF should approve copy, photos, current dog status, and usage rights before this becomes an official site.
+The first-pass organization copy is adapted from public ARSF pages. Featured-dog facts and descriptions are condensed from public ARSF Petfinder listings. Prototype images were copied from ARSF's public website and public Petfinder listings for this independent review build. The exact ARSF logo was preserved from `Images/arsf_logo230x200.fw.png`. The historical collections preserve links to their public ARSF-hosted images, videos, and documents so the review repository does not duplicate hundreds of media files. ARSF should approve copy, photos, current dog status, and usage rights before this becomes an official site.
 
 Primary public sources used in this pass:
 

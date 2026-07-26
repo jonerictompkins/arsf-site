@@ -1,0 +1,17 @@
+{
+  "name": "Isa",
+  "featured": true,
+  "status": "Available",
+  "age": "Young",
+  "sex": "Female",
+  "location": "Jacksonville, Florida",
+  "image": "/images/dogs/isa.jpg",
+  "image_alt": "Isa, a young female Akita available through ARSF",
+  "summary": "A fun-size Akita who warms up with time and loves to play and run. Isa is looking for a fenced yard and a home where she can be the only pet.",
+  "traits": [
+    "House-trained",
+    "Crate-trained",
+    "Only pet"
+  ],
+  "petfinder_url": "https://www.petfinder.com/dog/isa-76744260/fl/jacksonville/akita-rescue-society-of-florida-fl199/"
+}

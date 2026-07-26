@@ -1,0 +1,17 @@
+{
+  "name": "Willow",
+  "featured": true,
+  "status": "Available",
+  "age": "Adult",
+  "sex": "Female",
+  "location": "Jacksonville, Florida",
+  "image": "/images/dogs/willow.jpg",
+  "image_alt": "Willow, an adult female Akita available through ARSF",
+  "summary": "About two years old and raised around her owner's grandchildren. Willow can get along with dogs she knows and is being cared for by her owner while she waits.",
+  "traits": [
+    "Family-experienced",
+    "Dog-selective",
+    "No chickens"
+  ],
+  "petfinder_url": "https://www.petfinder.com/dog/willow-76401997/fl/jacksonville/akita-rescue-society-of-florida-fl199/"
+}

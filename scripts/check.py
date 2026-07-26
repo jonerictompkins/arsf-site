@@ -308,6 +308,12 @@ for page in generated_tribute_pages:
         error(f"{label}: shared tribute color theme is missing")
     if 'class="page-section memorial-tribute"' not in page_markup:
         error(f"{label}: tribute story layout is missing")
+    if "Held close by ARSF" not in page_markup:
+        error(f"{label}: ARSF final-home remembrance is missing")
+    if 'href="../">Return to all memorials</a>' not in page_markup:
+        error(f"{label}: return to all memorials action is missing")
+    if "Visit the shared remembrance" in page_markup:
+        error(f"{label}: tribute closing still links to the shared remembrance")
 if len(generated_remembrance_pages) != expected_remembrance_pages:
     error(
         "dist/memorials/remembering: expected one static page for each "

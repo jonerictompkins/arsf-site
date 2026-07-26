@@ -1960,11 +1960,8 @@ h3 {
   color: rgba(255, 255, 255, 0.66);
 }
 
-.bridge-callout .text-link {
-  display: inline-block;
-  margin-top: 0.75rem;
-  color: var(--white);
-  font-weight: 750;
+.bridge-callout .button {
+  margin-top: 1rem;
 }
 
 .remembrance-page {

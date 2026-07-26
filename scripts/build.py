@@ -86,7 +86,15 @@ def paw_trail() -> str:
       </svg>"""
 
 
-def bridge_callout() -> str:
+def held_close_copy(orphan_count: int, heading: str = "h3") -> str:
+    return f"""
+          <{heading}>Held close by ARSF</{heading}>
+          <p>A heart appears beside the names of {orphan_count} Akitas for whom rescue became their final home.</p>
+          <p>They may not have reached a traditional adoptive family, but they were not without one. They were sheltered, cared for, and loved by the ARSF community through the end of their lives.</p>
+          <p>The heart honors that bond.</p>"""
+
+
+def bridge_callout(orphan_count: int) -> str:
     return f"""
       <section class="bridge-callout">
         <figure>
@@ -94,10 +102,9 @@ def bridge_callout() -> str:
         </figure>
         <div>
           {paw_trail()}
-          <p class="eyebrow">Their steps remain with us</p>
-          <h2>Every remembered life has a place here.</h2>
-          <p>For the Akitas whose full stories were never written down, ARSF still carries their names forward.</p>
-          <a class="text-link" href="../remembering/">Visit the shared remembrance <span aria-hidden="true">→</span></a>
+          <p class="eyebrow">Always part of our story</p>
+          {held_close_copy(orphan_count, heading="h2")}
+          <a class="button button-light" href="../">Return to all memorials</a>
         </div>
       </section>"""
 
@@ -529,6 +536,7 @@ def build_feature_videos(site: dict, archive: dict) -> None:
 
 def build_tribute_pages(site: dict, archive: dict) -> dict[str, str]:
     internal_links = {}
+    orphan_count = sum(bool(item.get("orphan")) for item in archive["memorials"])
     memorial_by_source = {
         item["tribute_url"]: item
         for item in archive["memorials"]
@@ -619,7 +627,7 @@ def build_tribute_pages(site: dict, archive: dict) -> dict[str, str]:
               </div>
             </article>
           </div>
-          {bridge_callout()}
+          {bridge_callout(orphan_count)}
         </div>
       </section>"""
         slug = f"memorials/{tribute['slug']}"
@@ -692,7 +700,7 @@ def build_tribute_pages(site: dict, archive: dict) -> dict[str, str]:
               </div>
             </article>
           </div>
-          {bridge_callout()}
+          {bridge_callout(orphan_count)}
         </div>
       </section>"""
         write_page(
@@ -811,10 +819,7 @@ def remembrance_body(
             <aside>
               <span class="orphan-marker orphan-marker--legend" aria-hidden="true">♥</span>
               <div>
-                <h3>Held close by ARSF</h3>
-                <p>A heart appears beside the names of {orphan_count} Akitas for whom rescue became their final home.</p>
-                <p>They may not have reached a traditional adoptive family, but they were not without one. They were sheltered, cared for, and loved by the ARSF community through the end of their lives.</p>
-                <p>The heart honors that bond.</p>
+                {held_close_copy(orphan_count)}
               </div>
             </aside>"""
     if focus:

@@ -1938,17 +1938,116 @@ h3 {
   background: var(--ink-deep);
 }
 
+.remembrance-focus[hidden] {
+  display: none;
+}
+
+.remembrance-focus {
+  display: grid;
+  overflow: hidden;
+  margin-bottom: clamp(4rem, 9vw, 8rem);
+  background: #232220;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: var(--radius);
+  grid-template-columns: minmax(17rem, 0.78fr) minmax(0, 1.22fr);
+}
+
+.remembrance-focus[data-orphan] {
+  border: 2px solid var(--coral);
+}
+
+.remembrance-focus figure {
+  position: relative;
+  min-height: 28rem;
+  margin: 0;
+  background:
+    radial-gradient(circle at center, rgba(213, 13, 3, 0.18), transparent 38%),
+    linear-gradient(145deg, #302e2b, #1b1a19);
+}
+
+.remembrance-focus figure > img,
+.remembrance-focus-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 28rem;
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.remembrance-focus-placeholder {
+  display: grid;
+  color: rgba(255, 255, 255, 0.52);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  place-items: center;
+  text-align: center;
+}
+
+.remembrance-focus-placeholder[hidden],
+.remembrance-focus figure > img[hidden],
+.remembrance-focus-heart[hidden] {
+  display: none;
+}
+
+.remembrance-focus-heart {
+  position: absolute;
+  right: 1.4rem;
+  bottom: 1.4rem;
+  display: grid;
+  width: 3.2rem;
+  height: 3.2rem;
+  color: var(--white);
+  background: var(--coral);
+  border: 4px solid #232220;
+  border-radius: 50%;
+  place-items: center;
+}
+
+.remembrance-focus > div {
+  align-self: center;
+  padding: clamp(2.2rem, 6vw, 5.5rem);
+}
+
+.remembrance-focus h2 {
+  margin: 0.45rem 0 1rem;
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+}
+
+.remembrance-focus-tagline {
+  margin: 0;
+  color: var(--white);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+  font-style: italic;
+}
+
+.remembrance-focus-dates {
+  margin: 0.7rem 0 0;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.remembrance-focus-note {
+  max-width: 37rem;
+  margin: 2rem 0 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.86rem;
+}
+
 .remembrance-grid {
   display: grid;
-  align-items: center;
+  align-items: start;
   grid-template-columns: minmax(0, 1.08fr) minmax(19rem, 0.72fr);
   gap: clamp(3rem, 8vw, 8rem);
 }
 
 .remembrance-copy h2 {
-  max-width: 13ch;
+  max-width: 14ch;
   margin: 0.5rem 0 1.75rem;
-  font-size: clamp(3rem, 6vw, 5.7rem);
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
 }
 
 .remembrance-copy > p:not(.eyebrow) {
@@ -1958,16 +2057,34 @@ h3 {
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
 }
 
-.remembrance-copy blockquote {
-  max-width: 38rem;
-  padding: 0.5rem 0 0.5rem 1.5rem;
-  margin: 2.5rem 0;
+.remembrance-refrain {
+  padding: 1.4rem 0 1.4rem 1.6rem;
+  margin: 2.6rem 0;
   color: var(--white);
   border-left: 3px solid var(--coral);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.45rem, 3vw, 2.15rem);
-  font-style: italic;
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
   line-height: 1.35;
+}
+
+.remembrance-refrain span {
+  display: block;
+}
+
+.remembrance-copy h3 {
+  max-width: 16ch;
+  margin: 4rem 0 1rem;
+  color: var(--white);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.remembrance-copy .button {
+  margin-top: 1.5rem;
+}
+
+.remembrance-art {
+  position: sticky;
+  top: 8rem;
 }
 
 .remembrance-art figure {
@@ -1989,8 +2106,8 @@ h3 {
 
 .remembrance-art aside {
   display: flex;
-  align-items: center;
-  padding: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
   margin-top: 1rem;
   background: rgba(255, 255, 255, 0.055);
   border: 1px solid rgba(213, 13, 3, 0.68);
@@ -1998,19 +2115,22 @@ h3 {
   gap: 1rem;
 }
 
-.remembrance-art aside p,
-.remembrance-art aside strong {
-  display: block;
-}
-
 .remembrance-art aside p {
   margin: 0;
   color: rgba(255, 255, 255, 0.68);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
+  line-height: 1.6;
 }
 
-.remembrance-art aside strong {
+.remembrance-art aside p + p {
+  margin-top: 0.8rem;
+}
+
+.remembrance-art aside h3 {
+  margin: 0 0 0.75rem;
   color: var(--white);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
 }
 
 .photo-grid {
@@ -2260,6 +2380,7 @@ h3 {
 
   .tribute-story-grid,
   .bridge-callout,
+  .remembrance-focus,
   .remembrance-grid {
     grid-template-columns: 1fr;
   }
@@ -2272,6 +2393,17 @@ h3 {
   .bridge-callout figure img {
     max-height: 30rem;
     min-height: 0;
+  }
+
+  .remembrance-focus figure,
+  .remembrance-focus figure > img,
+  .remembrance-focus-placeholder {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .remembrance-art {
+    position: static;
   }
 }
 
@@ -2453,6 +2585,15 @@ h3 {
 
   .remembrance-art aside {
     align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .remembrance-focus {
+    border-radius: var(--radius-sm);
+  }
+
+  .remembrance-focus > div {
+    padding: 1.6rem;
   }
 
   .source-note {

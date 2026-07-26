@@ -54,6 +54,21 @@ def memorial_caption(item: dict) -> str:
     )
 
 
+def memorial_focus_details(item: dict) -> tuple[str, str]:
+    caption = memorial_caption(item)
+    date_pattern = re.compile(
+        r"\b(?:19|20)\d{2}\s*[-–]\s*(?:19|20)\d{2}\b"
+        r"|\b\d{1,2}[/-]\d{1,2}[/-]\d{2,4}\b"
+        r"|\b\d{1,2}/(?:19|20)\d{2}\b"
+    )
+    dates = list(dict.fromkeys(date_pattern.findall(caption)))
+    tagline = date_pattern.sub("", caption)
+    tagline = re.sub(r"\s+", " ", tagline).strip(" ,·-–")
+    if tagline.lower() in {"", "crossed", "passed"}:
+        tagline = "Always remembered"
+    return tagline, " · ".join(dates)
+
+
 def paw_trail() -> str:
     paw = """
       <g>
@@ -690,36 +705,85 @@ def build_tribute_pages(site: dict, archive: dict) -> dict[str, str]:
 
 def build_remembrance_page(site: dict, archive: dict) -> None:
     orphan_count = sum(bool(item.get("orphan")) for item in archive["memorials"])
+    focus_records = []
+    for item in archive["memorials"]:
+        if item.get("tribute_url"):
+            continue
+        tagline, dates = memorial_focus_details(item)
+        focus_records.append(
+            {
+                "id": item["source_id"],
+                "name": item["name"],
+                "tagline": tagline,
+                "dates": dates,
+                "image": item.get("image"),
+                "orphan": bool(item.get("orphan")),
+            }
+        )
+    focus_data = json.dumps(
+        focus_records,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).replace("<", "\\u003c")
     body = f"""
       <section class="page-section remembrance-page" id="shared-remembrance">
-        <div class="shell remembrance-grid">
-          <article class="remembrance-copy">
-            {paw_trail()}
-            <p class="eyebrow">For the stories that were never written down</p>
-            <h2>A life does not need a long biography to be worth remembering.</h2>
-            <p>Dogs leave their history in ordinary places: the quiet corner they chose, the familiar rhythm of a walk, the people who learned patience from them, and the welcome that changed a difficult day.</p>
-            <p>For some Akitas in ARSF’s archive, a name, a photograph, and a final date are all that remain online. That is not the measure of their life. They were here. Someone spoke their name. Someone carried them as far as they could.</p>
-            <blockquote>What is loved becomes part of the people who did the loving.</blockquote>
-            <a class="button button-light" href="../">Return to every memorial</a>
-          </article>
-          <div class="remembrance-art">
+        <div class="shell">
+          <article class="remembrance-focus" id="remembered-akita" data-remembrance-focus aria-live="polite" hidden>
             <figure>
-              <img src="../../images/archive/rainbow-bridge.jpg" alt="Rainbow Bridge artwork preserved from ARSF’s memorial archive" width="526" height="392">
-              <figcaption>The Rainbow Bridge artwork remains part of ARSF’s memorial tradition.</figcaption>
+              <img data-remembrance-image alt="Memorial photograph" hidden>
+              <div class="remembrance-focus-placeholder" data-remembrance-placeholder hidden><span>Remembered<br>with love</span></div>
+              <span class="remembrance-focus-heart" data-remembrance-heart hidden aria-label="Held close by ARSF">♥</span>
             </figure>
-            <aside>
-              <span class="orphan-marker orphan-marker--legend" aria-hidden="true">♥</span>
-              <p><strong>Held forever by ARSF</strong>{orphan_count} Akitas are marked with a heart because rescue was the only forever home they knew.</p>
-            </aside>
+            <div>
+              <p class="eyebrow" data-remembrance-kicker>Remembered together</p>
+              <h2 data-remembrance-name></h2>
+              <p class="remembrance-focus-tagline" data-remembrance-tagline></p>
+              <p class="remembrance-focus-dates" data-remembrance-dates></p>
+              <p class="remembrance-focus-note" data-remembrance-note></p>
+            </div>
+          </article>
+          <div class="remembrance-grid">
+            <article class="remembrance-copy">
+              {paw_trail()}
+              <p class="eyebrow">Every life leaves something behind</p>
+              <h2>Not every beloved life can be gathered into words.</h2>
+              <p>Some stories remain in quieter forms: a familiar photograph, a name still spoken with affection, the memory of a watchful presence beside the door or a gentle head resting near someone who needed comfort.</p>
+              <p>The Akitas remembered here were each individuals. They had their own expressions, habits, loyalties, and ways of becoming part of a family. Although we may not know every detail of their lives, we know they mattered.</p>
+              <div class="remembrance-refrain" aria-label="They were known, loved, and remembered">
+                <span>They were known.</span>
+                <span>They were loved.</span>
+                <span>They are remembered.</span>
+              </div>
+              <p>Together, these photographs preserve more than a record. They reflect years of companionship, rescue, trust, and devotion shared throughout the ARSF community.</p>
+              <h3>Always part of our story</h3>
+              <p>The love given to an Akita does not disappear when their life ends. It remains in the people who cared for them, in the homes they changed, and in the work that continues in their memory.</p>
+              <a class="button button-light" href="../">Return to all memorials</a>
+            </article>
+            <div class="remembrance-art">
+              <figure>
+                <img src="../../images/archive/rainbow-bridge.jpg" alt="Rainbow Bridge artwork preserved from ARSF’s memorial archive" width="526" height="392">
+                <figcaption><em>Rainbow Bridge artwork preserved from the ARSF memorial archive.</em></figcaption>
+              </figure>
+              <aside>
+                <span class="orphan-marker orphan-marker--legend" aria-hidden="true">♥</span>
+                <div>
+                  <h3>Held close by ARSF</h3>
+                  <p>A heart appears beside the names of {orphan_count} Akitas for whom rescue became their final home.</p>
+                  <p>They may not have reached a traditional adoptive family, but they were not without one. They were sheltered, cared for, and loved by the ARSF community through the end of their lives.</p>
+                  <p>The heart honors that bond.</p>
+                </div>
+              </aside>
+            </div>
           </div>
+          <script type="application/json" id="remembrance-records">{focus_data}</script>
         </div>
       </section>"""
     write_page(
         site,
         "memorials/remembering",
-        title="A place for every remembered Akita",
-        description="A shared remembrance for the Akitas whose names and photographs remain, even when no individual tribute was written.",
-        eyebrow="Their steps remain with us",
+        title="Remembered together",
+        description="For the Akitas whose names and photographs remain with us, even when their stories were never written down.",
+        eyebrow="Always part of our story",
         group="Memorials",
         body=body,
     )
@@ -733,7 +797,10 @@ def build_memorials(
     cards = []
     for item in archive["memorials"]:
         tribute_url = item.get("tribute_url")
-        source = tribute_links.get(tribute_url, "./remembering/")
+        source = tribute_links.get(
+            tribute_url,
+            f"./remembering/?memorial={item['source_id']}",
+        )
         orphan = bool(item.get("orphan"))
         caption = memorial_caption(item)
         marker = (

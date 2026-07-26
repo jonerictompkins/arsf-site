@@ -1,0 +1,47 @@
+[
+  {
+    "number": "01",
+    "title": "Know the Akita",
+    "description": "History, temperament, training, health, and the honest guidance that helps people understand this remarkable working breed.",
+    "links": [
+      {"label": "A brief history of the Akita", "url": "https://www.arsf.org/akita_history.html"},
+      {"label": "Advantages of rescue", "url": "https://www.arsf.org/advantages.html"},
+      {"label": "Akita Coach", "url": "https://www.arsf.org/akita_coach.html"},
+      {"label": "Bloat and emergency resources", "url": "https://www.arsf.org/bloat_information.html"}
+    ]
+  },
+  {
+    "number": "02",
+    "title": "Rescue & placement",
+    "description": "Careful matching, adoption, responsible rehoming, rescue ethics, and a network that reaches far beyond Florida.",
+    "links": [
+      {"label": "Akitas available now", "url": "https://www.petfinder.com/member/us/fl/jacksonville/akita-rescue-society-of-florida-fl199/"},
+      {"label": "Adoption forms", "url": "https://www.arsf.org/forms.html"},
+      {"label": "Rehoming information", "url": "https://www.arsf.org/rehome.html"},
+      {"label": "Placement guidance", "url": "https://www.arsf.org/placing_your_pet.html"},
+      {"label": "Other Akita rescues", "url": "https://www.arsf.org/other_rescues.html"}
+    ]
+  },
+  {
+    "number": "03",
+    "title": "Celebrate the breed",
+    "description": "Happy endings, television appearances, community picnics, and decades of Akitas showing the world who they are.",
+    "links": [
+      {"label": "Happy Tails", "url": "https://www.arsf.org/happy_tails.html"},
+      {"label": "Dog Stars", "url": "https://www.arsf.org/dog_stars.html"},
+      {"label": "Akitas of Florida", "url": "https://www.arsf.org/akitas_of_florida.html"},
+      {"label": "ARSF picnic archive", "url": "https://www.arsf.org/picnic_2017.html"}
+    ]
+  },
+  {
+    "number": "04",
+    "title": "Remember them",
+    "description": "A living memorial for the Akitas who shaped families, changed volunteers, and remain part of this society’s story.",
+    "links": [
+      {"label": "Memorials and tributes", "url": "https://www.arsf.org/rainbow.html"},
+      {"label": "Taz", "url": "https://www.arsf.org/taz.html"},
+      {"label": "Hansel and Gretel", "url": "https://www.arsf.org/hansel_gretel.html"},
+      {"label": "Yes to Love", "url": "https://www.arsf.org/yes_to_love.html"}
+    ]
+  }
+]

@@ -61,7 +61,7 @@ def error(message: str) -> None:
     ERRORS.append(message)
 
 
-def load(path: Path) -> dict:
+def load(path: Path) -> dict | list:
     try:
         with path.open(encoding="utf-8") as handle:
             return json.load(handle)
@@ -83,7 +83,12 @@ def require_https(value: str, label: str) -> None:
 
 
 site_path = ROOT / "content" / "site.json"
-site = load(site_path)
+site_data = load(site_path)
+if isinstance(site_data, dict):
+    site = site_data
+else:
+    error("content/site.json: expected an object")
+    site = {}
 require(
     site,
     (
@@ -103,13 +108,41 @@ for field in ("petfinder_url", "application_url", "donation_url", "wishlist_url"
     if site.get(field):
         require_https(site[field], f"content/site.json:{field}")
 
+resources_path = ROOT / "content" / "resources.json"
+resources = load(resources_path)
+if not isinstance(resources, list) or not resources:
+    error("content/resources.json: add at least one resource collection")
+else:
+    for index, resource in enumerate(resources, start=1):
+        label = f"content/resources.json:item {index}"
+        if not isinstance(resource, dict):
+            error(f"{label}: expected an object")
+            continue
+        require(resource, ("number", "title", "description", "links"), label)
+        links = resource.get("links")
+        if not isinstance(links, list) or not links:
+            error(f"{label}: add at least one link")
+            continue
+        for link_index, link in enumerate(links, start=1):
+            link_label = f"{label}:link {link_index}"
+            if not isinstance(link, dict):
+                error(f"{link_label}: expected an object")
+                continue
+            require(link, ("label", "url"), link_label)
+            if link.get("url"):
+                require_https(link["url"], f"{link_label}:url")
+
 dog_paths = sorted((ROOT / "content" / "dogs").glob("*.json"))
 if not dog_paths:
     error("content/dogs: add at least one dog")
 
 for path in dog_paths:
-    dog = load(path)
     label = str(path.relative_to(ROOT))
+    dog_data = load(path)
+    if not isinstance(dog_data, dict):
+        error(f"{label}: expected an object")
+        continue
+    dog = dog_data
     require(
         dog,
         (
@@ -165,4 +198,7 @@ if ERRORS:
         print(f"- {item}", file=sys.stderr)
     raise SystemExit(1)
 
-print(f"Validated site content, {len(dog_paths)} dogs, and generated output.")
+print(
+    f"Validated site content, {len(resources) if isinstance(resources, list) else 0} "
+    f"resource collections, {len(dog_paths)} dogs, and generated output."
+)

@@ -3,6 +3,10 @@ media:
     label: Dog photos
     input: public/images/dogs
     output: /images/dogs
+  - name: archive_images
+    label: Story and archive photos
+    input: public/images/archive
+    output: /images/archive
 
 settings:
   content:
@@ -83,6 +87,39 @@ content:
       - name: demo_notice
         label: Prototype notice
         type: text
+
+  - name: resources
+    label: Akita library
+    type: file
+    path: content/resources.json
+    format: json
+    list: true
+    fields:
+      - name: number
+        label: Display number
+        type: string
+        required: true
+      - name: title
+        label: Collection title
+        type: string
+        required: true
+      - name: description
+        label: Collection introduction
+        type: text
+        required: true
+      - name: links
+        label: Links
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Link label
+            type: string
+            required: true
+          - name: url
+            label: Destination
+            type: string
+            required: true
 
   - name: dogs
     label: Featured dogs

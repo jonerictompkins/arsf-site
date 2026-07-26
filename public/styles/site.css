@@ -173,18 +173,10 @@ h3 {
   text-decoration: none;
 }
 
-.brand-mark {
-  display: grid;
+.brand-logo {
   flex: 0 0 auto;
-  width: 2.9rem;
-  height: 2.9rem;
-  color: var(--white);
-  background: var(--coral);
-  border-radius: 50% 50% 46% 54% / 47% 55% 45% 53%;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.65rem;
-  place-items: center;
-  transform: rotate(-4deg);
+  width: 3.6rem;
+  height: auto;
 }
 
 .brand strong,
@@ -385,6 +377,19 @@ h3 {
   position: relative;
 }
 
+.hero-emblem {
+  position: absolute;
+  top: 2.3rem;
+  left: -3.6rem;
+  width: clamp(6.5rem, 11vw, 9rem);
+  padding: 0.8rem;
+  background: rgba(255, 254, 250, 0.94);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  box-shadow: 0 14px 40px rgba(28, 51, 45, 0.16);
+  transform: rotate(-5deg);
+}
+
 .hero-photo {
   overflow: hidden;
   aspect-ratio: 0.78;
@@ -511,6 +516,104 @@ h3 {
   font-size: 1.02rem;
 }
 
+.library-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.library-section::before {
+  position: absolute;
+  top: 1rem;
+  right: -7rem;
+  width: min(36rem, 62vw);
+  height: min(31rem, 54vw);
+  background: url("../images/brand/arsf-logo-watermark.png") center / contain no-repeat;
+  content: "";
+  opacity: 0.035;
+  pointer-events: none;
+  transform: rotate(7deg);
+}
+
+.library-section .shell {
+  position: relative;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.resource-card {
+  display: grid;
+  min-height: 25rem;
+  padding: clamp(1.7rem, 3vw, 2.5rem);
+  background: rgba(255, 254, 250, 0.78);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  grid-template-rows: auto auto auto 1fr;
+}
+
+.resource-card:nth-child(2),
+.resource-card:nth-child(3) {
+  color: var(--white);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.resource-number {
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  margin-bottom: 2.5rem;
+  color: var(--ink);
+  background: var(--gold);
+  border-radius: 50%;
+  font-family: Georgia, "Times New Roman", serif;
+  place-items: center;
+}
+
+.resource-card > p {
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.resource-card:nth-child(2) > p,
+.resource-card:nth-child(3) > p {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.resource-card ul {
+  align-self: end;
+  padding: 1.3rem 0 0;
+  margin: 1rem 0 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.resource-card:nth-child(2) ul,
+.resource-card:nth-child(3) ul {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.resource-card li + li {
+  margin-top: 0.58rem;
+}
+
+.resource-card a {
+  font-size: 0.8rem;
+  font-weight: 750;
+  text-decoration-color: var(--coral);
+  text-decoration-thickness: 2px;
+}
+
+.resource-card:nth-child(2) a,
+.resource-card:nth-child(3) a {
+  text-decoration-color: var(--gold);
+}
+
 .dog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -623,6 +726,11 @@ h3 {
   text-align: center;
 }
 
+.adopt-actions {
+  align-items: center;
+  justify-content: center;
+}
+
 .process-section {
   position: relative;
   color: var(--white);
@@ -720,6 +828,24 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.story-card-logo {
+  color: var(--ink);
+  background: var(--white);
+}
+
+.story-card-logo > img {
+  width: min(14rem, 80%);
+  margin: 0 auto 2.2rem;
+}
+
+.story-card-logo .story-year {
+  border-bottom-color: var(--line);
+}
+
+.story-card-logo .story-caption {
+  color: var(--muted);
+}
+
 .story-card::before {
   position: absolute;
   z-index: -1;
@@ -790,6 +916,100 @@ h3 {
 .principles span {
   color: var(--muted);
   font-size: 0.82rem;
+}
+
+.archive-section {
+  color: var(--white);
+  background: var(--ink-deep);
+}
+
+.archive-section .eyebrow {
+  color: var(--gold);
+}
+
+.archive-section .split-heading > p {
+  color: rgba(255, 255, 255, 0.64);
+}
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+  grid-template-rows: repeat(2, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.archive-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-height: 15rem;
+  background: var(--ink);
+  border-radius: var(--radius);
+  isolation: isolate;
+}
+
+.archive-card-tall {
+  grid-row: 1 / 3;
+}
+
+.archive-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.archive-card::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 25%, rgba(16, 39, 32, 0.9));
+  content: "";
+}
+
+.archive-card-memory::after {
+  background: linear-gradient(180deg, rgba(16, 39, 32, 0.08), rgba(16, 39, 32, 0.94));
+}
+
+.archive-card:hover img {
+  transform: scale(1.035);
+}
+
+.archive-card > span {
+  position: absolute;
+  z-index: 2;
+  right: 1.6rem;
+  bottom: 1.5rem;
+  left: 1.6rem;
+}
+
+.archive-card small,
+.archive-card strong,
+.archive-card em {
+  display: block;
+}
+
+.archive-card small {
+  margin-bottom: 0.25rem;
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.archive-card strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+}
+
+.archive-card em {
+  margin-top: 0.75rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
 }
 
 .help-section {
@@ -927,6 +1147,14 @@ h3 {
   font-size: 0.72rem;
 }
 
+.footer-logo {
+  width: 4.3rem;
+  height: auto;
+  padding: 0.35rem;
+  background: var(--white);
+  border-radius: 50%;
+}
+
 .footer-links {
   display: flex;
   gap: 1.5rem;
@@ -958,6 +1186,10 @@ h3 {
 
   .hero-note {
     right: -0.5rem;
+  }
+
+  .hero-emblem {
+    left: -1.5rem;
   }
 
   .trust-row li {
@@ -1073,6 +1305,10 @@ h3 {
     gap: 3rem;
   }
 
+  .archive-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .contact-grid {
     align-items: start;
     grid-template-columns: 1fr;
@@ -1133,6 +1369,20 @@ h3 {
     bottom: 1rem;
   }
 
+  .hero-emblem {
+    top: 1.2rem;
+    left: -0.25rem;
+    width: 6.5rem;
+  }
+
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-card {
+    min-height: 22rem;
+  }
+
   .dog-grid {
     grid-template-columns: 1fr;
   }
@@ -1172,6 +1422,17 @@ h3 {
 
   .story-card {
     max-width: 28rem;
+  }
+
+  .archive-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+  }
+
+  .archive-card,
+  .archive-card-tall {
+    min-height: 22rem;
+    grid-row: auto;
   }
 
   .principles div {

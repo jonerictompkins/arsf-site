@@ -6,7 +6,16 @@
 
 ## Recommended demo route
 
-Use `arsf.wonderfulrealms.com` on a static host. This is isolated from the existing Wonderful Realms site, requires only a DNS record, and can later be removed without changing the main site.
+Use GitHub Pages at `arsf.wonderfulrealms.com`, matching the existing Wonderful Realms site-project pattern. This is isolated from the GoDaddy-managed main site, requires only a subdomain DNS record, and can later be removed without changing the main site.
+
+The repository includes a GitHub Actions workflow that:
+
+1. builds the static site;
+2. runs content and link validation;
+3. uploads only the generated `dist/` site;
+4. deploys the validated artifact to GitHub Pages.
+
+The first review can use the repository's `github.io` address. After that works, configure `arsf.wonderfulrealms.com` in the repository's Pages settings and add the exact DNS record GitHub reports. Do not guess the record before the repository exists.
 
 ## Exact `/arsf` route
 

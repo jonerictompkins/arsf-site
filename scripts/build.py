@@ -47,8 +47,26 @@ def dog_card(dog: dict) -> str:
             </article>"""
 
 
+def resource_card(resource: dict) -> str:
+    links = "".join(
+        (
+            f'<li><a href="{safe(link["url"])}" target="_blank" rel="noopener">'
+            f'{safe(link["label"])} <span aria-hidden="true">↗</span></a></li>'
+        )
+        for link in resource["links"]
+    )
+    return f"""
+            <article class="resource-card">
+              <span class="resource-number">{safe(resource['number'])}</span>
+              <h3>{safe(resource['title'])}</h3>
+              <p>{safe(resource['description'])}</p>
+              <ul>{links}</ul>
+            </article>"""
+
+
 def build() -> None:
     site = load_json(CONTENT / "site.json")
+    resources = load_json(CONTENT / "resources.json")
     dogs = [
         load_json(path)
         for path in sorted((CONTENT / "dogs").glob("*.json"))
@@ -67,6 +85,7 @@ def build() -> None:
             "meta_description": safe(site["mission"]),
             "years_serving": str(date.today().year - int(site["founded_year"])),
             "dog_cards": "\n".join(dog_card(dog) for dog in featured),
+            "resource_cards": "\n".join(resource_card(resource) for resource in resources),
         }
     )
 

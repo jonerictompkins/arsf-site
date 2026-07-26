@@ -739,38 +739,38 @@ def remembrance_focus(item: dict) -> str:
         'loading="eager">'
         if item.get("image")
         else (
-            '<div class="remembrance-focus-placeholder" role="img" '
+            '<div class="tribute-photo-missing" role="img" '
             f'aria-label="No photograph is available for {safe(item["name"])}">'
             '<span>Remembered<br>with love</span></div>'
         )
     )
     heart = (
-        '<span class="remembrance-focus-heart" '
-        'aria-label="Held close by ARSF">♥</span>'
+        '<span class="tribute-orphan-marker">'
+        '<span aria-hidden="true">♥</span>'
+        '<span class="sr-only">Held close by ARSF</span></span>'
         if item.get("orphan")
         else ""
     )
-    orphan_attribute = " data-orphan" if item.get("orphan") else ""
+    orphan_class = " tribute-portrait--orphan" if item.get("orphan") else ""
     kicker = "Held close by ARSF" if item.get("orphan") else "Remembered by ARSF"
     dates_markup = (
-        f'<p class="remembrance-focus-dates">{safe(dates)}</p>'
+        f'<p class="remembrance-card-dates">{safe(dates)}</p>'
         if dates
         else ""
     )
     return f"""
-          <article class="remembrance-focus" id="remembered-akita"{orphan_attribute}>
+          <aside class="tribute-portrait remembrance-portrait{orphan_class}" id="remembered-akita">
             <figure>
               {portrait}
               {heart}
             </figure>
             <div>
-              <p class="eyebrow">{kicker}</p>
-              <h2>{safe(item["name"])}</h2>
-              <p class="remembrance-focus-tagline">{safe(tagline)}</p>
+              <span>{kicker}</span>
+              <strong>{safe(item["name"])}</strong>
+              <p>{safe(tagline)}</p>
               {dates_markup}
-              <p class="remembrance-focus-note">Although no individual tribute was preserved, {safe(item["name"])}’s place in the ARSF community is held here with all the others.</p>
             </div>
-          </article>"""
+          </aside>"""
 
 
 def remembrance_body(
@@ -787,11 +787,7 @@ def remembrance_body(
         if legacy_links
         else ""
     )
-    return f"""
-      <section class="page-section remembrance-page" id="shared-remembrance">
-        <div class="shell">
-          {focus}
-          <div class="remembrance-grid">
+    remembrance_copy = f"""
             <article class="remembrance-copy">
               {paw_trail()}
               <p class="remembrance-explanation">Not every beloved life can be gathered into words.</p>
@@ -806,23 +802,42 @@ def remembrance_body(
               <h3>Always part of our story</h3>
               <p>The love given to an Akita does not disappear when their life ends. It remains in the people who cared for them, in the homes they changed, and in the work that continues in their memory.</p>
               <a class="button button-light" href="{memorials_href}">Return to all memorials</a>
-            </article>
-            <div class="remembrance-art">
-              <figure>
-                <img src="{asset_root}images/archive/rainbow-bridge.jpg" alt="Rainbow Bridge artwork preserved from ARSF’s memorial archive" width="526" height="392">
-                <figcaption><em>Rainbow Bridge artwork preserved from the ARSF memorial archive.</em></figcaption>
-              </figure>
-              <aside>
-                <span class="orphan-marker orphan-marker--legend" aria-hidden="true">♥</span>
-                <div>
-                  <h3>Held close by ARSF</h3>
-                  <p>A heart appears beside the names of {orphan_count} Akitas for whom rescue became their final home.</p>
-                  <p>They may not have reached a traditional adoptive family, but they were not without one. They were sheltered, cared for, and loved by the ARSF community through the end of their lives.</p>
-                  <p>The heart honors that bond.</p>
-                </div>
-              </aside>
-            </div>
+            </article>"""
+    remembrance_art = f"""
+            <figure>
+              <img src="{asset_root}images/archive/rainbow-bridge.jpg" alt="Rainbow Bridge artwork preserved from ARSF’s memorial archive" width="526" height="392">
+              <figcaption><em>Rainbow Bridge artwork preserved from the ARSF memorial archive.</em></figcaption>
+            </figure>
+            <aside>
+              <span class="orphan-marker orphan-marker--legend" aria-hidden="true">♥</span>
+              <div>
+                <h3>Held close by ARSF</h3>
+                <p>A heart appears beside the names of {orphan_count} Akitas for whom rescue became their final home.</p>
+                <p>They may not have reached a traditional adoptive family, but they were not without one. They were sheltered, cared for, and loved by the ARSF community through the end of their lives.</p>
+                <p>The heart honors that bond.</p>
+              </div>
+            </aside>"""
+    if focus:
+        remembrance_content = f"""
+          <div class="tribute-story-grid remembrance-story-grid">
+            {focus}
+            {remembrance_copy}
           </div>
+          <div class="remembrance-art remembrance-art--wide">
+            {remembrance_art}
+          </div>"""
+    else:
+        remembrance_content = f"""
+          <div class="remembrance-grid">
+            {remembrance_copy}
+            <div class="remembrance-art">
+              {remembrance_art}
+            </div>
+          </div>"""
+    return f"""
+      <section class="page-section remembrance-page" id="shared-remembrance">
+        <div class="shell">
+          {remembrance_content}
           {legacy_data}
         </div>
       </section>"""

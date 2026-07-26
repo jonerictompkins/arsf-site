@@ -1909,6 +1909,7 @@ h3 {
 
 .bridge-callout {
   display: grid;
+  align-items: center;
   overflow: hidden;
   margin-top: clamp(4rem, 9vw, 8rem);
   color: var(--white);
@@ -1918,15 +1919,20 @@ h3 {
 }
 
 .bridge-callout figure {
-  min-height: 100%;
-  margin: 0;
+  display: grid;
+  align-items: center;
+  min-height: 0;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
+  margin: clamp(1rem, 2vw, 1.5rem);
+  background: var(--white);
+  border-radius: var(--radius-sm);
 }
 
 .bridge-callout figure img {
   width: 100%;
-  height: 100%;
-  min-height: 24rem;
-  object-fit: cover;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
 }
 
 .bridge-callout > div {
@@ -1957,6 +1963,7 @@ h3 {
 .bridge-callout .text-link {
   display: inline-block;
   margin-top: 0.75rem;
+  color: var(--white);
   font-weight: 750;
 }
 
@@ -1980,103 +1987,16 @@ h3 {
   font-size: clamp(1.05rem, 1.6vw, 1.22rem);
 }
 
-.remembrance-focus[hidden] {
-  display: none;
-}
-
-.remembrance-focus {
-  display: grid;
-  overflow: hidden;
-  margin-bottom: clamp(4rem, 9vw, 8rem);
-  background: #232220;
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: var(--radius);
-  grid-template-columns: minmax(17rem, 0.78fr) minmax(0, 1.22fr);
-}
-
-.remembrance-focus[data-orphan] {
-  border: 2px solid var(--coral);
-}
-
-.remembrance-focus figure {
-  position: relative;
-  min-height: 28rem;
-  margin: 0;
-  background:
-    radial-gradient(circle at center, rgba(213, 13, 3, 0.18), transparent 38%),
-    linear-gradient(145deg, #302e2b, #1b1a19);
-}
-
-.remembrance-focus figure > img,
-.remembrance-focus-placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 28rem;
-  object-fit: cover;
-  object-position: center 35%;
-}
-
-.remembrance-focus-placeholder {
-  display: grid;
-  color: rgba(255, 255, 255, 0.52);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.25rem;
-  place-items: center;
-  text-align: center;
-}
-
-.remembrance-focus-placeholder[hidden],
-.remembrance-focus figure > img[hidden],
-.remembrance-focus-heart[hidden] {
-  display: none;
-}
-
-.remembrance-focus-heart {
-  position: absolute;
-  right: 1.4rem;
-  bottom: 1.4rem;
-  display: grid;
-  width: 3.2rem;
-  height: 3.2rem;
-  color: var(--white);
-  background: var(--coral);
-  border: 4px solid #232220;
-  border-radius: 50%;
-  place-items: center;
-}
-
-.remembrance-focus > div {
-  align-self: center;
-  padding: clamp(2.2rem, 6vw, 5.5rem);
-}
-
-.remembrance-focus h2 {
-  margin: 0.45rem 0 1rem;
-  font-size: clamp(3rem, 6vw, 5.6rem);
-}
-
-.remembrance-focus-tagline {
-  margin: 0;
-  color: var(--white);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  font-style: italic;
-  line-height: 1.35;
-}
-
-.remembrance-focus-dates {
-  margin: 0.85rem 0 0;
+.remembrance-portrait .remembrance-card-dates {
+  margin-top: 0.45rem;
   color: var(--gold);
-  font-size: 0.95rem;
+  font-size: 0.86rem;
   font-weight: 800;
   letter-spacing: 0.04em;
 }
 
-.remembrance-focus-note {
-  max-width: 37rem;
-  margin: 2rem 0 0;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 1rem;
+.remembrance-story-grid .remembrance-copy {
+  max-width: 45rem;
 }
 
 .remembrance-grid {
@@ -2131,6 +2051,20 @@ h3 {
 .remembrance-art {
   position: sticky;
   top: 8rem;
+}
+
+.remembrance-art--wide {
+  position: static;
+  display: grid;
+  align-items: stretch;
+  margin-top: clamp(4rem, 9vw, 8rem);
+  grid-template-columns: minmax(17rem, 0.8fr) minmax(0, 1.2fr);
+  gap: 1rem;
+}
+
+.remembrance-art--wide aside {
+  align-items: center;
+  margin-top: 0;
 }
 
 .remembrance-art figure {
@@ -2426,26 +2360,14 @@ h3 {
 
   .tribute-story-grid,
   .bridge-callout,
-  .remembrance-focus,
-  .remembrance-grid {
+  .remembrance-grid,
+  .remembrance-art--wide {
     grid-template-columns: 1fr;
   }
 
   .tribute-portrait {
     position: static;
     width: min(100%, 32rem);
-  }
-
-  .bridge-callout figure img {
-    max-height: 30rem;
-    min-height: 0;
-  }
-
-  .remembrance-focus figure,
-  .remembrance-focus figure > img,
-  .remembrance-focus-placeholder {
-    min-height: 0;
-    aspect-ratio: 4 / 3;
   }
 
   .remembrance-art {
@@ -2632,14 +2554,6 @@ h3 {
   .remembrance-art aside {
     align-items: flex-start;
     flex-direction: column;
-  }
-
-  .remembrance-focus {
-    border-radius: var(--radius-sm);
-  }
-
-  .remembrance-focus > div {
-    padding: 1.6rem;
   }
 
   .source-note {

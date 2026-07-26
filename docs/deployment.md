@@ -8,6 +8,8 @@
 
 Use GitHub Pages at `arsf.wonderfulrealms.com`, matching the existing Wonderful Realms site-project pattern. This is isolated from the GoDaddy-managed main site, requires only a subdomain DNS record, and can later be removed without changing the main site.
 
+The demo is now deployed at [arsf.wonderfulrealms.com](https://arsf.wonderfulrealms.com/). DNS validation has succeeded; GitHub Pages HTTPS enforcement can be enabled after certificate provisioning completes.
+
 The repository includes a GitHub Actions workflow that:
 
 1. builds the static site;
@@ -15,7 +17,7 @@ The repository includes a GitHub Actions workflow that:
 3. uploads only the generated `dist/` site;
 4. deploys the validated artifact to GitHub Pages.
 
-The first review can use the repository's `github.io` address. After that works, configure `arsf.wonderfulrealms.com` in the repository's Pages settings and add the exact DNS record GitHub reports. Do not guess the record before the repository exists.
+The custom domain uses a CNAME from `arsf.wonderfulrealms.com` to the repository owner's GitHub Pages hostname. The site source and workflow remain independent of the GoDaddy-managed main website.
 
 ## Exact `/arsf` route
 
@@ -25,7 +27,7 @@ To serve the full prototype at `wonderfulrealms.com/arsf`, choose one of:
 2. Move the Wonderful Realms site to hosting that supports path-based routing.
 3. Create a GoDaddy `/arsf` page that links or redirects to the subdomain. This preserves a friendly entry URL but does not keep the final address at `/arsf`.
 
-No DNS or hosting changes should be made until the prototype and public scope are approved.
+No path-based proxy or main-site hosting change is required for the current subdomain demo.
 
 ## Production separation
 

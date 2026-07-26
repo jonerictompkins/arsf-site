@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{meta_description}}">
-    <meta name="theme-color" content="#18362f">
+    <meta name="theme-color" content="#171717">
     <title>{{organization}} | For the love of Akitas</title>
     <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./styles/site.css">
@@ -17,32 +17,7 @@
       <div class="shell">{{demo_notice}}</div>
     </div>
 
-    <header class="site-header" data-header>
-      <div class="shell header-inner">
-        <a class="brand" href="#top" aria-label="{{organization}} home">
-          <img class="brand-logo" src="./images/brand/arsf-logo.png" alt="ARSF heart-and-Akita logo" width="58" height="50">
-          <span>
-            <strong>{{short_name}}</strong>
-            <small>Akita Rescue Society of Florida</small>
-          </span>
-        </a>
-
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-          <span class="sr-only">Toggle navigation</span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </button>
-
-        <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
-          <a href="#library">The Akita</a>
-          <a href="#adopt">Rescue & placement</a>
-          <a href="#stories">Stories & memorials</a>
-          <a href="#about">Our society</a>
-          <a class="button button-small button-coral" href="#help">Support ARSF</a>
-        </nav>
-      </div>
-    </header>
+    {{site_header}}
 
     <main id="main">
       <section class="hero" id="top">
@@ -66,7 +41,6 @@
             <figure class="hero-photo">
               <img src="./images/dogs/charlie.jpg" alt="Charlie, an Akita mix available for adoption through ARSF" width="900" height="1100">
             </figure>
-            <img class="hero-emblem" src="./images/brand/arsf-logo.png" alt="ARSF heart-and-Akita logo" width="230" height="200">
             <div class="hero-note">
               <span aria-hidden="true">♥</span>
               <p><strong>More than rescue.</strong> A living home for Akita knowledge, community, memory, and care.</p>
@@ -161,7 +135,7 @@
           </ol>
           <div class="process-cta">
             <p>New to Akitas? Start with the breed, then meet the dogs.</p>
-            <a class="button button-dark" href="https://www.arsf.org/akita_history.html" target="_blank" rel="noopener">Read about the Akita</a>
+            <a class="button button-dark" href="./learn/akita-history/">Read about the Akita</a>
           </div>
         </div>
       </section>
@@ -197,15 +171,15 @@
             <p>Rescue is measured in individual lives. ARSF’s archive holds years of homecomings, public ambassadors, friendships, and tributes that deserve more than a forgotten gallery.</p>
           </div>
           <div class="archive-grid">
-            <a class="archive-card archive-card-tall" href="https://www.arsf.org/happy_tails.html" target="_blank" rel="noopener">
+            <a class="archive-card archive-card-tall" href="./stories/happy-tails/">
               <img src="./images/archive/happy-tails-hisashi.jpg" alt="Hisashi, one of ARSF's Happy Tails" width="400" height="482" loading="lazy">
               <span><small>Placed with love</small><strong>Happy Tails</strong><em>Explore the adoption archive ↗</em></span>
             </a>
-            <a class="archive-card archive-card-wide" href="https://www.arsf.org/dog_stars.html" target="_blank" rel="noopener">
+            <a class="archive-card archive-card-wide" href="./stories/dog-stars/">
               <img src="./images/archive/dog-star-magnolia.jpg" alt="Magnolia representing ARSF as a television pet of the week" width="1920" height="1080" loading="lazy">
               <span><small>Akita ambassadors</small><strong>Dog Stars</strong><em>Watch their appearances ↗</em></span>
             </a>
-            <a class="archive-card archive-card-wide archive-card-memory" href="https://www.arsf.org/rainbow.html" target="_blank" rel="noopener">
+            <a class="archive-card archive-card-wide archive-card-memory" href="./memorials/">
               <img src="./images/archive/rainbow-bridge.jpg" alt="Rainbow Bridge artwork from ARSF's memorial collection" width="526" height="392" loading="lazy">
               <span><small>Always part of the society</small><strong>Memorials</strong><em>Remember them with us ↗</em></span>
             </a>
@@ -266,23 +240,6 @@
       </section>
     </main>
 
-    <footer class="site-footer">
-      <div class="shell footer-grid">
-        <div class="footer-brand">
-          <img class="footer-logo" src="./images/brand/arsf-logo.png" alt="ARSF heart-and-Akita logo" width="58" height="50">
-          <div><strong>{{organization}}</strong><span>Serving the Southeast and beyond</span></div>
-        </div>
-        <div class="footer-links">
-          <a href="#adopt">Adopt</a>
-          <a href="#about">Our work</a>
-          <a href="#help">Help</a>
-          <a href="#contact">Contact</a>
-        </div>
-        <div class="footer-meta">
-          <p>{{nonprofit_note}}</p>
-          <p>Content prototype based on ARSF’s public website and Petfinder listings. Details should be confirmed before launch.</p>
-        </div>
-      </div>
-    </footer>
+    {{site_footer}}
   </body>
 </html>

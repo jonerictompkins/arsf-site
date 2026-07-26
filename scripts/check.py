@@ -130,7 +130,11 @@ else:
                 continue
             require(link, ("label", "url"), link_label)
             if link.get("url"):
-                require_https(link["url"], f"{link_label}:url")
+                if not (
+                    link["url"].startswith("./")
+                    or urlparse(link["url"]).scheme == "https"
+                ):
+                    error(f"{link_label}:url: expected a local path or complete https URL")
 
 dog_paths = sorted((ROOT / "content" / "dogs").glob("*.json"))
 if not dog_paths:
@@ -169,22 +173,75 @@ for path in dog_paths:
     if dog.get("traits") and not isinstance(dog["traits"], list):
         error(f"{label}: traits must be a list")
 
-output = ROOT / "dist" / "index.html"
-if not output.is_file():
-    error("dist/index.html: run scripts/build.py first")
+archive_path = ROOT / "content" / "legacy_archive.json"
+archive_data = load(archive_path)
+if isinstance(archive_data, dict):
+    archive = archive_data
 else:
-    markup = output.read_text(encoding="utf-8")
-    for fragment in ("{{", "href=\"http://", "src=\"http://"):
-        if fragment in markup:
-            error(f"dist/index.html: unexpected fragment {fragment!r}")
-    parser = SiteParser()
-    parser.feed(markup)
-    if not "".join(parser.title_text).strip():
-        error("dist/index.html: page title is missing")
-    for reference in parser.local_references:
-        resolved = ROOT / "dist" / reference.removeprefix("./").split("?", 1)[0]
-        if not resolved.exists():
-            error(f"dist/index.html: local reference not found: {reference}")
+    error("content/legacy_archive.json: expected an object")
+    archive = {}
+
+for field in (
+    "inventory",
+    "happy_tails",
+    "dog_stars",
+    "memorials",
+    "tributes",
+    "feature_videos",
+    "articles",
+    "rescue_network",
+    "picnics",
+    "documents",
+):
+    if field not in archive or not archive[field]:
+        error(f"content/legacy_archive.json: missing archive collection '{field}'")
+
+article_slugs: set[str] = set()
+for index, article in enumerate(archive.get("articles", []), start=1):
+    label = f"content/legacy_archive.json:article {index}"
+    if not isinstance(article, dict):
+        error(f"{label}: expected an object")
+        continue
+    require(
+        article,
+        ("slug", "group", "eyebrow", "title", "summary", "source_url", "paragraphs"),
+        label,
+    )
+    slug = article.get("slug")
+    if slug in article_slugs:
+        error(f"{label}: duplicate slug '{slug}'")
+    if slug:
+        article_slugs.add(slug)
+    if article.get("source_url"):
+        require_https(article["source_url"], f"{label}:source_url")
+
+output_root = ROOT / "dist"
+html_paths = sorted(output_root.glob("**/*.html"))
+if not html_paths:
+    error("dist: run scripts/build.py first")
+else:
+    for output in html_paths:
+        label = str(output.relative_to(ROOT))
+        markup = output.read_text(encoding="utf-8")
+        for fragment in ("{{", "href=\"http://", "src=\"http://"):
+            if fragment in markup:
+                error(f"{label}: unexpected fragment {fragment!r}")
+        parser = SiteParser()
+        parser.feed(markup)
+        if not "".join(parser.title_text).strip():
+            error(f"{label}: page title is missing")
+        for reference in parser.local_references:
+            clean_reference = reference.split("?", 1)[0].split("#", 1)[0]
+            if not clean_reference:
+                continue
+            resolved = (output.parent / clean_reference).resolve()
+            try:
+                resolved.relative_to(output_root.resolve())
+            except ValueError:
+                error(f"{label}: local reference escapes dist: {reference}")
+                continue
+            if not resolved.exists():
+                error(f"{label}: local reference not found: {reference}")
 
 stylesheet = ROOT / "dist" / "styles" / "site.css"
 if stylesheet.is_file():
@@ -200,5 +257,6 @@ if ERRORS:
 
 print(
     f"Validated site content, {len(resources) if isinstance(resources, list) else 0} "
-    f"resource collections, {len(dog_paths)} dogs, and generated output."
+    f"resource collections, {len(dog_paths)} dogs, {len(html_paths)} pages, "
+    "and generated archive output."
 )

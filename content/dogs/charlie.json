@@ -1,0 +1,17 @@
+{
+  "name": "Charlie",
+  "featured": true,
+  "status": "Available",
+  "age": "Adult",
+  "sex": "Male",
+  "location": "Jacksonville, Florida",
+  "image": "/images/dogs/charlie.jpg",
+  "image_alt": "Charlie, an adult male Akita mix available through ARSF",
+  "summary": "A handsome, energetic Huskita looking for an active home with a secure yard. Charlie may do well with a calm female dog after a thoughtful introduction.",
+  "traits": [
+    "House-trained",
+    "Active home",
+    "Secure yard"
+  ],
+  "petfinder_url": "https://www.petfinder.com/dog/charlie-76143919/fl/jacksonville/akita-rescue-society-of-florida-fl199/"
+}

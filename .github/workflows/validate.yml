@@ -1,0 +1,19 @@
+name: Validate site
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Build static site
+        run: python3 scripts/build.py
+      - name: Validate content and output
+        run: python3 scripts/check.py

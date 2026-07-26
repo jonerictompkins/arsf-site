@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{meta_description}}">
+    <meta name="theme-color" content="#18362f">
+    <title>{{organization}} | Akita adoption and rescue</title>
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles/site.css">
+    <script src="./scripts/site.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div class="demo-bar" role="note">
+      <div class="shell">{{demo_notice}}</div>
+    </div>
+
+    <header class="site-header" data-header>
+      <div class="shell header-inner">
+        <a class="brand" href="#top" aria-label="{{organization}} home">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <span>
+            <strong>{{short_name}}</strong>
+            <small>Akita Rescue Society of Florida</small>
+          </span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+
+        <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+          <a href="#adopt">Adopt</a>
+          <a href="#about">Our work</a>
+          <a href="#help">Ways to help</a>
+          <a href="#contact">Contact</a>
+          <a class="button button-small button-coral" href="{{donation_url}}" target="_blank" rel="noopener">Donate</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">{{eyebrow}}</p>
+            <h1>{{hero_title}}</h1>
+            <p class="hero-lead">{{hero_text}}</p>
+            <div class="button-row">
+              <a class="button button-coral" href="#adopt">Meet the Akitas</a>
+              <a class="button button-quiet" href="{{donation_url}}" target="_blank" rel="noopener">Help fund their care</a>
+            </div>
+            <ul class="trust-row" aria-label="Organization highlights">
+              <li><strong>{{years_serving}}+</strong><span>years of rescue</span></li>
+              <li><strong>501(c)(3)</strong><span>nonprofit</span></li>
+              <li><strong>8 states</strong><span>served across the Southeast</span></li>
+            </ul>
+          </div>
+
+          <div class="hero-visual">
+            <figure class="hero-photo">
+              <img src="./images/dogs/charlie.jpg" alt="Charlie, an Akita mix available for adoption through ARSF" width="900" height="1100">
+            </figure>
+            <div class="hero-note">
+              <span aria-hidden="true">♥</span>
+              <p><strong>Rescue is personal here.</strong> Every placement is built around the right fit—for the dog and the family.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quick-actions" aria-label="Get started">
+        <div class="shell action-grid">
+          <a href="#adopt">
+            <span class="action-number">01</span>
+            <span><strong>Find your companion</strong><small>See Akitas waiting for a home</small></span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="{{application_url}}" target="_blank" rel="noopener">
+            <span class="action-number">02</span>
+            <span><strong>Start an application</strong><small>Take the first step toward adoption</small></span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#help">
+            <span class="action-number">03</span>
+            <span><strong>Make rescue possible</strong><small>Donate, foster, transport, or supply</small></span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section dogs-section" id="adopt">
+        <div class="shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">Waiting to meet you</p>
+              <h2>Akitas looking for home</h2>
+            </div>
+            <p>Akitas are loyal, intelligent companions who thrive with thoughtful introductions and committed families. We’ll help you understand each dog and decide whether the match feels right.</p>
+          </div>
+
+          <div class="dog-grid">
+            {{dog_cards}}
+          </div>
+
+          <div class="centered-action">
+            <a class="text-link" href="{{petfinder_url}}" target="_blank" rel="noopener">See every available dog on Petfinder <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section process-section">
+        <div class="shell">
+          <div class="section-heading">
+            <p class="eyebrow">A careful match, not a quick transaction</p>
+            <h2>What adoption looks like</h2>
+          </div>
+          <ol class="process-grid">
+            <li>
+              <span>1</span>
+              <h3>Tell us about home</h3>
+              <p>Complete the pre-adoption application so we can learn about your household, experience, and hopes.</p>
+            </li>
+            <li>
+              <span>2</span>
+              <h3>Talk with ARSF</h3>
+              <p>A volunteer follows up, answers questions, and helps narrow the dogs most likely to thrive with you.</p>
+            </li>
+            <li>
+              <span>3</span>
+              <h3>Meet thoughtfully</h3>
+              <p>Home checks and introductions give everyone the time and context needed to make a sound decision.</p>
+            </li>
+            <li>
+              <span>4</span>
+              <h3>Stay connected</h3>
+              <p>ARSF remains a resource throughout your Akita’s life with experience, guidance, and community.</p>
+            </li>
+          </ol>
+          <div class="process-cta">
+            <p>Ready to take the first step?</p>
+            <a class="button button-dark" href="{{application_url}}" target="_blank" rel="noopener">Begin the application</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section story-section" id="about">
+        <div class="shell story-grid">
+          <div class="story-card">
+            <p class="story-year">Since <strong>{{founded_year}}</strong></p>
+            <p class="story-quote">“Every dog deserves to be understood before being asked to start over.”</p>
+            <p class="story-caption">A people-first, dog-centered approach to rescue</p>
+          </div>
+          <div class="story-copy">
+            <p class="eyebrow">Built on experience</p>
+            <h2>Rescue that stays for the whole story</h2>
+            <p class="lead">{{mission}}</p>
+            <p>ARSF combines adoption with education, owner support, responsible rehoming guidance, spay and neuter assistance, medical care, and lifelong help for adopters. The goal is not simply to move dogs—it is to create placements that last.</p>
+            <div class="principles">
+              <div><strong>Responsible placement</strong><span>Applications, conversations, home visits, and deliberate introductions.</span></div>
+              <div><strong>Complete care</strong><span>Health screening, spay or neuter, microchipping, and treatment as needed.</span></div>
+              <div><strong>Lifetime support</strong><span>Practical Akita experience remains available after adoption day.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section help-section" id="help">
+        <div class="shell">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">Every kind of help matters</p>
+              <h2>Give an Akita more time</h2>
+            </div>
+            <p>You do not need to adopt to change a life. Financial gifts, supplies, foster space, transportation, and shared expertise all keep rescue moving.</p>
+          </div>
+          <div class="help-grid">
+            <article class="help-card help-card-featured">
+              <span class="help-icon" aria-hidden="true">$</span>
+              <h3>Fund their care</h3>
+              <p>Help cover veterinary treatment, food, boarding, transport, and the unplanned needs that arrive with every rescue.</p>
+              <a href="{{donation_url}}" target="_blank" rel="noopener">Donate securely <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="help-card">
+              <span class="help-icon" aria-hidden="true">⌂</span>
+              <h3>Foster</h3>
+              <p>A temporary home creates kennel space and gives ARSF a better picture of what a dog needs to thrive.</p>
+              <a href="{{phone_href}}">Call to ask about fostering</a>
+            </article>
+            <article class="help-card">
+              <span class="help-icon" aria-hidden="true">→</span>
+              <h3>Transport</h3>
+              <p>Help move dogs between shelters, veterinary care, foster homes, and adopters across the Southeast.</p>
+              <a href="{{phone_href}}">Talk with a volunteer</a>
+            </article>
+            <article class="help-card">
+              <span class="help-icon" aria-hidden="true">＋</span>
+              <h3>Send supplies</h3>
+              <p>Food, durable beds, cleaning supplies, gift cards, and medical essentials go directly into daily care.</p>
+              <a href="{{wishlist_url}}" target="_blank" rel="noopener">View the wish list <span aria-hidden="true">↗</span></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div class="shell contact-grid">
+          <div>
+            <p class="eyebrow">Start a conversation</p>
+            <h2>Questions about an Akita?</h2>
+            <p>Calling is the most reliable way to reach ARSF about adoption, fostering, owner support, or a dog in need.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="contact-phone" href="{{phone_href}}">{{phone_display}}</a>
+            <span>{{mailing_address}}</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <div><strong>{{organization}}</strong><span>Serving the Southeast and beyond</span></div>
+        </div>
+        <div class="footer-links">
+          <a href="#adopt">Adopt</a>
+          <a href="#about">Our work</a>
+          <a href="#help">Help</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-meta">
+          <p>{{nonprofit_note}}</p>
+          <p>Content prototype based on ARSF’s public website and Petfinder listings. Details should be confirmed before launch.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

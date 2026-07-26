@@ -1,0 +1,158 @@
+media:
+  - name: dog_images
+    label: Dog photos
+    input: public/images/dogs
+    output: /images/dogs
+
+settings:
+  content:
+    merge: true
+  commit:
+    identity: user
+    templates:
+      create: "content: add {filename}"
+      update: "content: update {filename}"
+      delete: "content: remove {filename}"
+
+content:
+  - name: site
+    label: Site basics
+    type: file
+    path: content/site.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: organization
+        label: Organization name
+        type: string
+        required: true
+      - name: short_name
+        label: Short name
+        type: string
+        required: true
+      - name: eyebrow
+        label: Hero eyebrow
+        type: string
+      - name: hero_title
+        label: Hero headline
+        type: string
+        required: true
+      - name: hero_text
+        label: Hero introduction
+        type: text
+        required: true
+      - name: mission
+        label: Mission
+        type: text
+        required: true
+      - name: phone_display
+        label: Phone number shown
+        type: string
+        required: true
+      - name: phone_href
+        label: Phone link
+        type: string
+        description: "Use the format tel:+19043023980"
+        required: true
+      - name: mailing_address
+        label: Mailing address
+        type: string
+      - name: petfinder_url
+        label: Petfinder organization link
+        type: string
+        required: true
+      - name: application_url
+        label: Adoption application link
+        type: string
+        required: true
+      - name: donation_url
+        label: Donation link
+        type: string
+        required: true
+      - name: wishlist_url
+        label: Wish list link
+        type: string
+      - name: founded_year
+        label: Founded year
+        type: number
+        required: true
+      - name: nonprofit_note
+        label: Nonprofit footer note
+        type: text
+      - name: demo_notice
+        label: Prototype notice
+        type: text
+
+  - name: dogs
+    label: Featured dogs
+    type: collection
+    path: content/dogs
+    format: json
+    filename:
+      template: "{name}.json"
+      field: create
+    view:
+      primary: name
+      fields: [featured, status, age, sex]
+      sort: name
+      order: asc
+    fields:
+      - name: name
+        label: Name
+        type: string
+        required: true
+      - name: featured
+        label: Show on homepage
+        type: boolean
+        required: true
+      - name: status
+        label: Status
+        type: select
+        required: true
+        options:
+          values: [Available, Pending, Courtesy listing]
+      - name: age
+        label: Age group
+        type: select
+        required: true
+        options:
+          values: [Baby, Young, Adult, Senior]
+      - name: sex
+        label: Sex
+        type: select
+        required: true
+        options:
+          values: [Female, Male]
+      - name: location
+        label: Location
+        type: string
+        required: true
+      - name: image
+        label: Primary photo
+        type: image
+        required: true
+        options:
+          media: dog_images
+          extensions: [jpg, jpeg, png, webp]
+          rename: true
+      - name: image_alt
+        label: Photo description
+        type: string
+        description: Describe the dog for visitors who cannot see the photo.
+        required: true
+      - name: summary
+        label: Short introduction
+        type: text
+        required: true
+      - name: traits
+        label: At-a-glance traits
+        type: string
+        list:
+          min: 1
+          max: 5
+        required: true
+      - name: petfinder_url
+        label: Petfinder listing
+        type: string
+        required: true

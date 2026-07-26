@@ -1,0 +1,17 @@
+{
+  "name": "Chewie",
+  "featured": false,
+  "status": "Available",
+  "age": "Adult",
+  "sex": "Male",
+  "location": "Jacksonville, Florida",
+  "image": "/images/dogs/chewie.jpg",
+  "image_alt": "Chewie, an adult male Akita available through ARSF",
+  "summary": "A kind soul looking for his kindred spirits. Chewie may live with a larger female dog and would be most comfortable in a home without small children.",
+  "traits": [
+    "House-trained",
+    "Gentle spirit",
+    "No small children"
+  ],
+  "petfinder_url": "https://www.petfinder.com/dog/chewie-75551998/fl/jacksonville/akita-rescue-society-of-florida-fl199/"
+}

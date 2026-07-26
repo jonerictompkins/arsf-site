@@ -49,7 +49,7 @@ The public sitemap and linked source pages were normalized into the prototype on
 
 The resulting framework generates 197 responsive primary HTML pages plus a dedicated 404 page. Search and filtering run entirely in the browser; no visitor data or application answers are stored.
 
-The original memorial page used gray, rounded stones and nameplates as a literal cemetery metaphor. The redesign keeps the named place of remembrance, the red orphan distinction, and the solemn tone without reproducing a wall of tombstones. ARSF's Rainbow Bridge artwork remains visible. The old watermarked paw-print graphic is represented by an original, code-drawn paw trail so its emotional role survives without copying the surrounding meme text.
+The original memorial page used gray, rounded stones and nameplates as a literal cemetery metaphor. The redesign keeps the named place of remembrance, the red orphan distinction, and the solemn tone without reproducing a wall of tombstones. Written tributes, film tributes, and remembrance-only profiles now share the same portrait-card component; remembrance-only text begins beside that card rather than below a separate banner. ARSF's complete Rainbow Bridge artwork remains visible in a proportionally scaled frame without cropping. The old watermarked paw-print graphic is represented by an original, code-drawn paw trail so its emotional role survives without copying the surrounding meme text.
 
 ## Content provenance
 

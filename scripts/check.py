@@ -317,8 +317,10 @@ if len(generated_remembrance_pages) != expected_remembrance_pages:
 for page in generated_remembrance_pages:
     page_markup = page.read_text(encoding="utf-8")
     label = page.relative_to(ROOT)
-    if 'class="remembrance-focus"' not in page_markup:
-        error(f"{label}: personalized photograph and details are missing")
+    if 'class="tribute-portrait remembrance-portrait' not in page_markup:
+        error(f"{label}: shared portrait card is missing")
+    if 'class="tribute-story-grid remembrance-story-grid"' not in page_markup:
+        error(f"{label}: remembrance text is not beside the portrait card")
     if "Every life leaves something behind" not in page_markup:
         error(f"{label}: primary remembrance sentiment is missing")
     if 'class="remembrance-explanation"' not in page_markup:
@@ -388,7 +390,7 @@ if memorial_index.is_file():
             )
             continue
         page_markup = page.read_text(encoding="utf-8")
-        expected_name = f"<h2>{escape(str(memorial.get('name')))}</h2>"
+        expected_name = f"<strong>{escape(str(memorial.get('name')))}</strong>"
         if expected_name not in page_markup:
             error(f"{page.relative_to(ROOT)}: selected Akita name is missing")
         image = memorial.get("image")
@@ -396,7 +398,7 @@ if memorial_index.is_file():
             error(
                 f"{page.relative_to(ROOT)}: selected Akita photograph is missing"
             )
-        if not image and "remembrance-focus-placeholder" not in page_markup:
+        if not image and "tribute-photo-missing" not in page_markup:
             error(
                 f"{page.relative_to(ROOT)}: no-photo remembrance fallback is missing"
             )

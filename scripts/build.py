@@ -196,10 +196,12 @@ def write_page(
     slug: str,
     *,
     title: str,
+    heading: str | None = None,
     description: str,
     eyebrow: str,
     group: str,
     body: str,
+    page_class: str = "",
     output_file: str | None = None,
 ) -> None:
     output_path = OUTPUT / output_file if output_file else OUTPUT / slug / "index.html"
@@ -210,9 +212,11 @@ def write_page(
     values.update(
         {
             "page_title": safe(title),
+            "page_heading": safe(heading or title),
             "page_description": safe(description),
             "page_eyebrow": safe(eyebrow),
             "page_group": safe(group),
+            "page_class": safe(page_class),
             "page_body": body,
             "site_header": partial("header", site, root),
             "site_footer": partial("footer", site, root),
@@ -703,50 +707,92 @@ def build_tribute_pages(site: dict, archive: dict) -> dict[str, str]:
     return internal_links
 
 
-def build_remembrance_page(site: dict, archive: dict) -> None:
-    orphan_count = sum(bool(item.get("orphan")) for item in archive["memorials"])
-    focus_records = []
-    for item in archive["memorials"]:
+def remembrance_slugs(memorials: list[dict]) -> dict[str, str]:
+    slugs: dict[str, str] = {}
+    used: set[str] = set()
+    for item in memorials:
         if item.get("tribute_url"):
             continue
-        tagline, dates = memorial_focus_details(item)
-        focus_records.append(
-            {
-                "id": item["source_id"],
-                "name": item["name"],
-                "tagline": tagline,
-                "dates": dates,
-                "image": item.get("image"),
-                "orphan": bool(item.get("orphan")),
-            }
+        base = slugify(item["name"])
+        slug = base
+        if slug in used:
+            _, dates = memorial_focus_details(item)
+            date_suffix = slugify(dates)
+            slug = f"{base}-{date_suffix}" if dates else f"{base}-2"
+        counter = 2
+        candidate = slug
+        while candidate in used:
+            candidate = f"{slug}-{counter}"
+            counter += 1
+        used.add(candidate)
+        slugs[item["source_id"]] = candidate
+    return slugs
+
+
+def remembrance_focus(item: dict) -> str:
+    tagline, dates = memorial_focus_details(item)
+    portrait = (
+        f'<img src="{safe(item["image"])}" '
+        f'alt="{safe(item["name"])}, remembered by the ARSF community" '
+        'loading="eager">'
+        if item.get("image")
+        else (
+            '<div class="remembrance-focus-placeholder" role="img" '
+            f'aria-label="No photograph is available for {safe(item["name"])}">'
+            '<span>Remembered<br>with love</span></div>'
         )
-    focus_data = json.dumps(
-        focus_records,
-        ensure_ascii=False,
-        separators=(",", ":"),
-    ).replace("<", "\\u003c")
-    body = f"""
-      <section class="page-section remembrance-page" id="shared-remembrance">
-        <div class="shell">
-          <article class="remembrance-focus" id="remembered-akita" data-remembrance-focus aria-live="polite" hidden>
+    )
+    heart = (
+        '<span class="remembrance-focus-heart" '
+        'aria-label="Held close by ARSF">♥</span>'
+        if item.get("orphan")
+        else ""
+    )
+    orphan_attribute = " data-orphan" if item.get("orphan") else ""
+    kicker = "Held close by ARSF" if item.get("orphan") else "Remembered by ARSF"
+    dates_markup = (
+        f'<p class="remembrance-focus-dates">{safe(dates)}</p>'
+        if dates
+        else ""
+    )
+    return f"""
+          <article class="remembrance-focus" id="remembered-akita"{orphan_attribute}>
             <figure>
-              <img data-remembrance-image alt="Memorial photograph" hidden>
-              <div class="remembrance-focus-placeholder" data-remembrance-placeholder hidden><span>Remembered<br>with love</span></div>
-              <span class="remembrance-focus-heart" data-remembrance-heart hidden aria-label="Held close by ARSF">♥</span>
+              {portrait}
+              {heart}
             </figure>
             <div>
-              <p class="eyebrow" data-remembrance-kicker>Remembered together</p>
-              <h2 data-remembrance-name></h2>
-              <p class="remembrance-focus-tagline" data-remembrance-tagline></p>
-              <p class="remembrance-focus-dates" data-remembrance-dates></p>
-              <p class="remembrance-focus-note" data-remembrance-note></p>
+              <p class="eyebrow">{kicker}</p>
+              <h2>{safe(item["name"])}</h2>
+              <p class="remembrance-focus-tagline">{safe(tagline)}</p>
+              {dates_markup}
+              <p class="remembrance-focus-note">Although no individual tribute was preserved, {safe(item["name"])}’s place in the ARSF community is held here with all the others.</p>
             </div>
-          </article>
+          </article>"""
+
+
+def remembrance_body(
+    *,
+    orphan_count: int,
+    asset_root: str,
+    memorials_href: str,
+    focus: str = "",
+    legacy_links: str = "",
+) -> str:
+    legacy_data = (
+        f'<script type="application/json" id="legacy-remembrance-links">'
+        f"{legacy_links}</script>"
+        if legacy_links
+        else ""
+    )
+    return f"""
+      <section class="page-section remembrance-page" id="shared-remembrance">
+        <div class="shell">
+          {focus}
           <div class="remembrance-grid">
             <article class="remembrance-copy">
               {paw_trail()}
-              <p class="eyebrow">Every life leaves something behind</p>
-              <h2>Not every beloved life can be gathered into words.</h2>
+              <p class="remembrance-explanation">Not every beloved life can be gathered into words.</p>
               <p>Some stories remain in quieter forms: a familiar photograph, a name still spoken with affection, the memory of a watchful presence beside the door or a gentle head resting near someone who needed comfort.</p>
               <p>The Akitas remembered here were each individuals. They had their own expressions, habits, loyalties, and ways of becoming part of a family. Although we may not know every detail of their lives, we know they mattered.</p>
               <div class="remembrance-refrain" aria-label="They were known, loved, and remembered">
@@ -757,11 +803,11 @@ def build_remembrance_page(site: dict, archive: dict) -> None:
               <p>Together, these photographs preserve more than a record. They reflect years of companionship, rescue, trust, and devotion shared throughout the ARSF community.</p>
               <h3>Always part of our story</h3>
               <p>The love given to an Akita does not disappear when their life ends. It remains in the people who cared for them, in the homes they changed, and in the work that continues in their memory.</p>
-              <a class="button button-light" href="../">Return to all memorials</a>
+              <a class="button button-light" href="{memorials_href}">Return to all memorials</a>
             </article>
             <div class="remembrance-art">
               <figure>
-                <img src="../../images/archive/rainbow-bridge.jpg" alt="Rainbow Bridge artwork preserved from ARSF’s memorial archive" width="526" height="392">
+                <img src="{asset_root}images/archive/rainbow-bridge.jpg" alt="Rainbow Bridge artwork preserved from ARSF’s memorial archive" width="526" height="392">
                 <figcaption><em>Rainbow Bridge artwork preserved from the ARSF memorial archive.</em></figcaption>
               </figure>
               <aside>
@@ -775,31 +821,79 @@ def build_remembrance_page(site: dict, archive: dict) -> None:
               </aside>
             </div>
           </div>
-          <script type="application/json" id="remembrance-records">{focus_data}</script>
+          {legacy_data}
         </div>
       </section>"""
+
+
+def build_remembrance_pages(site: dict, archive: dict) -> dict[str, str]:
+    orphan_count = sum(bool(item.get("orphan")) for item in archive["memorials"])
+    slugs = remembrance_slugs(archive["memorials"])
+    legacy_links = json.dumps(
+        {
+            source_id: f"./{slug}/"
+            for source_id, slug in slugs.items()
+        },
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).replace("<", "\\u003c")
     write_page(
         site,
         "memorials/remembering",
-        title="Remembered together",
+        title="Every life leaves something behind",
         description="For the Akitas whose names and photographs remain with us, even when their stories were never written down.",
-        eyebrow="Always part of our story",
+        eyebrow="Remembered together",
         group="Memorials",
-        body=body,
+        page_class="remembrance-layout",
+        body=remembrance_body(
+            orphan_count=orphan_count,
+            asset_root="../../",
+            memorials_href="../",
+            legacy_links=legacy_links,
+        ),
     )
+    links: dict[str, str] = {}
+    for item in archive["memorials"]:
+        if item.get("tribute_url"):
+            continue
+        slug = slugs[item["source_id"]]
+        description = (
+            f"For {item['name']}, whose place in the ARSF community remains "
+            "with us even when a fuller story was never written down."
+        )
+        write_page(
+            site,
+            f"memorials/remembering/{slug}",
+            title=f"Remembering {item['name']}",
+            heading="Every life leaves something behind",
+            description=description,
+            eyebrow="Remembered together",
+            group="Memorials",
+            page_class="remembrance-layout",
+            body=remembrance_body(
+                orphan_count=orphan_count,
+                asset_root="../../../",
+                memorials_href="../../",
+                focus=remembrance_focus(item),
+            ),
+        )
+        links[item["source_id"]] = f"./remembering/{slug}/"
+    return links
 
 
 def build_memorials(
     site: dict,
     archive: dict,
     tribute_links: dict[str, str],
+    remembrance_links: dict[str, str],
 ) -> None:
     cards = []
     for item in archive["memorials"]:
         tribute_url = item.get("tribute_url")
-        source = tribute_links.get(
-            tribute_url,
-            f"./remembering/?memorial={item['source_id']}",
+        source = (
+            tribute_links[tribute_url]
+            if tribute_url
+            else remembrance_links[item["source_id"]]
         )
         orphan = bool(item.get("orphan"))
         caption = memorial_caption(item)
@@ -1134,8 +1228,8 @@ def build() -> None:
     build_dog_stars(site, archive)
     build_feature_videos(site, archive)
     tribute_links = build_tribute_pages(site, archive)
-    build_remembrance_page(site, archive)
-    build_memorials(site, archive, tribute_links)
+    remembrance_links = build_remembrance_pages(site, archive)
+    build_memorials(site, archive, tribute_links, remembrance_links)
     build_picnics(site, archive)
     build_rescue_network(site, archive)
     build_about(site, archive)

@@ -40,14 +40,14 @@ The public sitemap and linked source pages were normalized into the prototype on
 - 169 memorial entries, including the original no-photo remembrance
 - 77 memorials retain ARSF's red-border orphan distinction
 - 26 individual written or photographic tributes, plus 2 film remembrances
-- 1 shared remembrance page for the 141 Akitas without an original individual tribute; each card contextualizes that page with the preserved name, photograph, source tagline, dates, and orphan-heart status
+- 1 shared remembrance framework plus 141 static, human-readable remembrance pages for the Akitas without an original individual tribute; each page carries the preserved name, photograph, source tagline, dates, and orphan-heart status directly in its HTML
 - 6 feature videos
 - 4 picnic galleries containing 387 image references
 - 12 rescue-network records
 - 9 long-form society, breed, health, and placement articles
 - 7 PDF resources
 
-The resulting framework generates 56 responsive primary HTML pages plus a dedicated 404 page. Search and filtering run entirely in the browser; no visitor data or application answers are stored.
+The resulting framework generates 197 responsive primary HTML pages plus a dedicated 404 page. Search and filtering run entirely in the browser; no visitor data or application answers are stored.
 
 The original memorial page used gray, rounded stones and nameplates as a literal cemetery metaphor. The redesign keeps the named place of remembrance, the red orphan distinction, and the solemn tone without reproducing a wall of tombstones. ARSF's Rainbow Bridge artwork remains visible. The old watermarked paw-print graphic is represented by an original, code-drawn paw trail so its emotional role survives without copying the surrounding meme text.
 

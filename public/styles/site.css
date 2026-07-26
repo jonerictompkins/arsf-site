@@ -1938,6 +1938,20 @@ h3 {
   background: var(--ink-deep);
 }
 
+.remembrance-layout .page-hero {
+  padding: clamp(4rem, 7vw, 6rem) 0;
+}
+
+.remembrance-layout .page-hero h1 {
+  max-width: 15ch;
+  font-size: clamp(3rem, 5.3vw, 5rem);
+  line-height: 1;
+}
+
+.remembrance-layout .page-intro {
+  font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+}
+
 .remembrance-focus[hidden] {
   display: none;
 }
@@ -2010,31 +2024,31 @@ h3 {
 
 .remembrance-focus h2 {
   margin: 0.45rem 0 1rem;
-  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  font-size: clamp(3rem, 6vw, 5.6rem);
 }
 
 .remembrance-focus-tagline {
   margin: 0;
   color: var(--white);
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
   font-style: italic;
+  line-height: 1.35;
 }
 
 .remembrance-focus-dates {
-  margin: 0.7rem 0 0;
+  margin: 0.85rem 0 0;
   color: var(--gold);
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .remembrance-focus-note {
   max-width: 37rem;
   margin: 2rem 0 0;
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 1rem;
 }
 
 .remembrance-grid {
@@ -2044,10 +2058,14 @@ h3 {
   gap: clamp(3rem, 8vw, 8rem);
 }
 
-.remembrance-copy h2 {
-  max-width: 14ch;
-  margin: 0.5rem 0 1.75rem;
-  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
+.remembrance-explanation {
+  max-width: 32rem;
+  margin: 1.3rem 0 2rem;
+  color: var(--white);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.5rem, 2.2vw, 1.9rem);
+  font-style: italic;
+  line-height: 1.4;
 }
 
 .remembrance-copy > p:not(.eyebrow) {
@@ -2075,7 +2093,7 @@ h3 {
   max-width: 16ch;
   margin: 4rem 0 1rem;
   color: var(--white);
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(2rem, 3.4vw, 3rem);
 }
 
 .remembrance-copy .button {
@@ -2101,7 +2119,7 @@ h3 {
 .remembrance-art figcaption {
   padding: 1rem 1.25rem;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.82rem;
 }
 
 .remembrance-art aside {
@@ -2118,7 +2136,7 @@ h3 {
 .remembrance-art aside p {
   margin: 0;
   color: rgba(255, 255, 255, 0.68);
-  font-size: 0.78rem;
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 

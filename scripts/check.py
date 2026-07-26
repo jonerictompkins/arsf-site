@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
+from html import escape
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
@@ -280,6 +282,12 @@ else:
 memorial_output = output_root / "memorials"
 memorial_index = memorial_output / "index.html"
 remembrance_page = memorial_output / "remembering" / "index.html"
+expected_remembrance_pages = sum(
+    not item.get("tribute_url") for item in archive.get("memorials", [])
+)
+generated_remembrance_pages = sorted(
+    (memorial_output / "remembering").glob("*/index.html")
+)
 expected_tribute_pages = sum(
     bool(item.get("tribute_url")) for item in archive.get("memorials", [])
 )
@@ -293,59 +301,98 @@ if len(generated_tribute_pages) != expected_tribute_pages:
         "dist/memorials: expected one internal page for each source tribute "
         f"({expected_tribute_pages}), found {len(generated_tribute_pages)}"
     )
+if len(generated_remembrance_pages) != expected_remembrance_pages:
+    error(
+        "dist/memorials/remembering: expected one static page for each "
+        f"shared remembrance ({expected_remembrance_pages}), found "
+        f"{len(generated_remembrance_pages)}"
+    )
+for page in generated_remembrance_pages:
+    page_markup = page.read_text(encoding="utf-8")
+    label = page.relative_to(ROOT)
+    if 'class="remembrance-focus"' not in page_markup:
+        error(f"{label}: personalized photograph and details are missing")
+    if "Every life leaves something behind" not in page_markup:
+        error(f"{label}: primary remembrance sentiment is missing")
+    if 'class="remembrance-explanation"' not in page_markup:
+        error(f"{label}: supporting remembrance explanation is missing")
 if not remembrance_page.is_file():
     error("dist/memorials/remembering/index.html: shared remembrance is missing")
 else:
     remembrance_markup = remembrance_page.read_text(encoding="utf-8")
-    data_start = '<script type="application/json" id="remembrance-records">'
+    data_start = '<script type="application/json" id="legacy-remembrance-links">'
     data_end = "</script>"
     if data_start not in remembrance_markup:
         error(
-            "dist/memorials/remembering/index.html: contextual memorial data "
-            "is missing"
+            "dist/memorials/remembering/index.html: legacy remembrance redirects "
+            "are missing"
         )
     else:
         raw_data = remembrance_markup.split(data_start, 1)[1].split(data_end, 1)[0]
         try:
-            remembrance_records = json.loads(raw_data)
+            legacy_links = json.loads(raw_data)
         except json.JSONDecodeError as exc:
             error(
-                "dist/memorials/remembering/index.html: contextual memorial "
-                f"data is invalid JSON: {exc}"
+                "dist/memorials/remembering/index.html: legacy remembrance "
+                f"redirects are invalid JSON: {exc}"
             )
-            remembrance_records = []
-        expected_context_records = sum(
-            not item.get("tribute_url")
-            for item in archive.get("memorials", [])
-        )
-        if len(remembrance_records) != expected_context_records:
+            legacy_links = {}
+        if len(legacy_links) != expected_remembrance_pages:
             error(
-                "dist/memorials/remembering/index.html: contextual record "
-                f"count does not match shared memorials "
-                f"({len(remembrance_records)} != {expected_context_records})"
+                "dist/memorials/remembering/index.html: legacy redirect count "
+                f"does not match shared remembrances "
+                f"({len(legacy_links)} != {expected_remembrance_pages})"
             )
-        context_ids = {
-            item.get("id")
-            for item in remembrance_records
-            if isinstance(item, dict)
-        }
-        if len(context_ids) != len(remembrance_records):
+        if len(set(legacy_links.values())) != len(legacy_links):
             error(
-                "dist/memorials/remembering/index.html: contextual memorial "
-                "IDs must be unique"
+                "dist/memorials/remembering/index.html: legacy redirects must "
+                "target unique pages"
             )
 if memorial_index.is_file():
     memorial_markup = memorial_index.read_text(encoding="utf-8")
-    expected_shared_links = sum(
-        not item.get("tribute_url") for item in archive.get("memorials", [])
+    shared_memorials = [
+        item
+        for item in archive.get("memorials", [])
+        if not item.get("tribute_url")
+    ]
+    shared_links = re.findall(
+        r'href="(\./remembering/[^"?]+/)"',
+        memorial_markup,
     )
-    shared_links = memorial_markup.count('href="./remembering/?memorial=')
-    if shared_links != expected_shared_links:
+    if len(shared_links) != expected_remembrance_pages:
         error(
             "dist/memorials/index.html: shared remembrance link count does not "
-            f"match records without source tributes ({shared_links} != "
-            f"{expected_shared_links})"
+            f"match records without source tributes ({len(shared_links)} != "
+            f"{expected_remembrance_pages})"
         )
+    if len(set(shared_links)) != len(shared_links):
+        error("dist/memorials/index.html: shared remembrance links must be unique")
+    if "?memorial=" in memorial_markup:
+        error(
+            "dist/memorials/index.html: archive identifiers must not appear in "
+            "visitor-facing remembrance links"
+        )
+    for memorial, reference in zip(shared_memorials, shared_links, strict=False):
+        page = memorial_output / reference.removeprefix("./") / "index.html"
+        if not page.is_file():
+            error(
+                "dist/memorials/index.html: remembrance link does not resolve "
+                f"for {memorial.get('name')}: {reference}"
+            )
+            continue
+        page_markup = page.read_text(encoding="utf-8")
+        expected_name = f"<h2>{escape(str(memorial.get('name')))}</h2>"
+        if expected_name not in page_markup:
+            error(f"{page.relative_to(ROOT)}: selected Akita name is missing")
+        image = memorial.get("image")
+        if image and f'src="{escape(str(image), quote=True)}"' not in page_markup:
+            error(
+                f"{page.relative_to(ROOT)}: selected Akita photograph is missing"
+            )
+        if not image and "remembrance-focus-placeholder" not in page_markup:
+            error(
+                f"{page.relative_to(ROOT)}: no-photo remembrance fallback is missing"
+            )
     orphan_cards = memorial_markup.count(
         'class="memorial-card memorial-card--orphan"'
     )
